@@ -55,6 +55,14 @@ p = SlurmPool(  pool_size=None, #how many jobs run in parallel, use all resource
                 node_list=None # use all nodes if not specify
                 )
 ```
+for example:
+```python
+p = SlurmPool(  pool_size=100,
+                ncpus_per_job=2,
+                max_jobs_per_node=20,
+                node_list=['cpu01','cpu02','cpu03']
+                )
+```
 
 submit single job:
 
