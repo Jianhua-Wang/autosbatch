@@ -32,6 +32,8 @@ for num in range(5):
 submit to slurm, run 10 job at the same time.
 
 ```python
+from autosbatch import SlurmPool
+
 p = SlurmPool(10)
 p.starmap(run_cmd, params)
 ```
