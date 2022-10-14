@@ -15,12 +15,12 @@ pip install .
 ### submit single job
 
 ```python
-SlurmPool.autosbatch(partition='cpuPartition',
-                    node='cpu01',
-                    cpus_per_task=1,
-                    cmds='sleep 10',
-                    job_name='test',
-                    job_id='001')
+SlurmPool.single_submit(partition='cpuPartition',
+                        node='cpu01',
+                        cpus_per_task=1,
+                        cmds='sleep 10',
+                        job_name='test',
+                        job_id='001')
 
 ```
 
@@ -28,7 +28,7 @@ SlurmPool.autosbatch(partition='cpuPartition',
 
 single parameter (similar with `multiprocessing.Pool.map`)
 
-```bash
+```python
 def sleep(time):
     cmd = f'sleep {time}'
     return cmd
@@ -41,7 +41,7 @@ p.map(sleep, params)
 
 multiple parameters (similar with `multiprocessing.Pool.starmap`)
 
-```bash
+```python
 params = []
 for text in range(5):
     for time in range(6):
