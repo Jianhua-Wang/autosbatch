@@ -12,30 +12,47 @@ pip install .
 
 ## Usage
 
-example command of job:
+### submit single job
 
 ```python
-def run_cmd(num, time):
-    cmd = f'echo {num} && sleep {time}'
+SlurmPool.autosbatch(partition='cpuPartition',
+                    node='cpu01',
+                    cpus_per_task=1,
+                    cmds='sleep 10',
+                    job_name='test',
+                    job_id='001')
+
+```
+
+### submit multiple job
+
+single parameter (similar with `multiprocessing.Pool.map`)
+
+```bash
+def sleep(time):
+    cmd = f'sleep {time}'
     return cmd
-```
 
-parameter list:
-
-```python
-params = []
-for num in range(5):
-    for time in range(6):
-        params.append([num, time])
-```
-
-submit to slurm, run 10 job at the same time.
-
-```python
-from autosbatch import SlurmPool
+params = range(10)
 
 p = SlurmPool(10)
-p.starmap(run_cmd, params)
+p.map(sleep, params)
+```
+
+multiple parameters (similar with `multiprocessing.Pool.starmap`)
+
+```bash
+params = []
+for text in range(5):
+    for time in range(6):
+        params.append([text, time])
+
+def echo_sleep(text, time):
+    cmd = f'echo {text} && sleep {time}'
+    return cmd
+
+p = SlurmPool(10)
+p.starmap(echo_sleep, params)
 ```
 
 The sbatch scripts are put in `./script`. The error and stdout logs are in `./script/log`.
@@ -55,23 +72,46 @@ p = SlurmPool(  pool_size=None, #how many jobs run in parallel, use all resource
                 node_list=None # use all nodes if not specify
                 )
 ```
-for example:
-```python
-p = SlurmPool(  pool_size=100,
-                ncpus_per_job=2,
-                max_jobs_per_node=20,
-                node_list=['cpu01','cpu02','cpu03']
-                )
+
+### Use command line
+
+```bash
+$ autosbatch cmd.sh -j test
 ```
 
-submit single job:
+```bash
+$ cat cmd.sh
+sleep 0
+sleep 1
+sleep 2
+sleep 3
+sleep 4
+sleep 5
+sleep 6
+sleep 7
+sleep 8
+sleep 9
 
-```python
-SlurmPool.autosbatch(partition='cpuPartition',
-                    node='cpu01',
-                    cpus_per_task=1,
-                    cmds='sleep 10',
-                    job_name='test',
-                    job_id='001')
+```
 
+help message:
+
+```bash
+$ autosbatch --help                                                   
+Usage: autosbatch [OPTIONS] CMDFILE
+
+  autosbatch --ncpus-per-job 10 cmd.sh
+
+Options:
+  -p, --pool-size INTEGER         How many jobs do you want to run in
+                                  parallel. Use all resources if None.
+  -n, --ncpus-per-job INTEGER     How many cpus per job uses, default=2
+  -M, --max-jobs-per-node INTEGER
+                                  how many jobs can a node run in parallel at
+                                  most
+  -N, --node-list TEXT            specify the nodes you want to use, separated
+                                  by commas, e.g. 'cpu01,cpu02,cpu03', use as
+                                  many as you can if None
+  -j, --job-name TEXT             job name prefix, default=test
+  --help                          Show this message and exit.
 ```
