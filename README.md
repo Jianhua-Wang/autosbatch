@@ -12,6 +12,11 @@ pip install .
 
 ## Usage
 
+### import
+```python
+from autosbatch import SlurmPool
+```
+
 ### submit single job
 
 ```python
@@ -96,7 +101,7 @@ sleep 9
 
 help message:
 
-```bash
+```
 $ autosbatch --help                                                   
 Usage: autosbatch [OPTIONS] CMDFILE
 
