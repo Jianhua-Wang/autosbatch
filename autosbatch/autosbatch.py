@@ -97,6 +97,22 @@ class SlurmPool:
                 continue
             break
 
+    def map(self, func, iter):
+        cmds = [func(i) for i in iter]
+        cmd_bin = [[] for i in range(min(len(iter),self.pool_size))]
+        for i, cmd in enumerate(cmds, start=1):
+            cmd_bin[i%self.pool_size -1].append(cmd)
+        ith = 0
+        for node, n_jobs in self.jobs_on_nodes.items():
+            for _ in range(n_jobs):
+                self.autosbatch(self.nodes.loc[node, 'PARTITION'], node, self.ncpus_per_job, '\n'.join(cmd_bin[ith]), func.__name__, f'{ith:>03}')
+                ith += 1
+                if ith >= len(cmd_bin):
+                    break
+            else:
+                continue
+            break
+
     @classmethod
     def clean(cls):
         call('rm -rf ./script', shell=True)
