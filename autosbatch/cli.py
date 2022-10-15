@@ -16,6 +16,8 @@ def cli(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_nam
     with open(cmdfile, 'r') as f:
         cmds = f.readlines()
     cmds = [cmd.strip() for cmd in cmds]
+    if node_list:
+        node_list = node_list.split(',')
     p = SlurmPool(pool_size, ncpus_per_job, max_jobs_per_node, node_list)
     p.multi_submit(cmds, len(cmds), job_name)
 
