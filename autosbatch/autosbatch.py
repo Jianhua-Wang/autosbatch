@@ -2,7 +2,7 @@ import random
 from io import StringIO
 from subprocess import call, check_output
 from textwrap import dedent
-
+import logging
 import pandas as pd
 
 
@@ -95,13 +95,15 @@ class SlurmPool:
         call(f'chmod 755 ./script/scripts_{job_id}.sh', shell=True)
         call(f'sbatch ./script/scripts_{job_id}.sh', shell=True)
 
-    def multi_submit(cls, cmds, n_jobs, job_name):
+    def multi_submit(cls, cmds, n_jobs, job_name, logging_level=logging.ERROR):
+        logging.basicConfig(level=logging_level, format='%(message)s')
         cmd_bin = [[] for _ in range(min(n_jobs, cls.pool_size))]
         for i, cmd in enumerate(cmds, start=1):
             cmd_bin[i % cls.pool_size - 1].append(cmd)
         ith = 0
         for node, n_jobs in cls.jobs_on_nodes.items():
             for _ in range(n_jobs):
+                logging.info(f'Queue: {ith:>03}, Node: {node}, N_jobs: {len(cmd_bin[ith])}')
                 cls.single_submit(
                     cls.nodes.loc[node, 'PARTITION'],
                     node,

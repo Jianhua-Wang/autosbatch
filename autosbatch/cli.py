@@ -1,6 +1,6 @@
 from autosbatch import SlurmPool
 import click
-
+import logging
 
 @click.command()
 @click.option('-p', '--pool-size', 'pool_size', type=int, help="How many jobs do you want to run in parallel. Use all resources if None.")
@@ -18,8 +18,19 @@ def cli(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_nam
     cmds = [cmd.strip() for cmd in cmds]
     if node_list:
         node_list = node_list.split(',')
-    p = SlurmPool(pool_size, ncpus_per_job, max_jobs_per_node, node_list)
-    p.multi_submit(cmds, len(cmds), job_name)
+    max_pool_size = SlurmPool(ncpus_per_job=ncpus_per_job)
+    max_pool_size = max_pool_size.pool_size
+    p = SlurmPool(min(max_pool_size, len(cmds)), ncpus_per_job, max_jobs_per_node, node_list)
+    click.echo(f'N jobs: {len(cmds)}')
+    click.echo(f'Pool size: {p.pool_size}')
+    click.echo(f'N cpus per job: {p.ncpus_per_job}')
+    click.echo(f'Max jobs per node: {p.max_jobs_per_node}')
+    # click.echo(f'Use node: {",".join(p.jobs_on_nodes.keys())}')
+    # click.echo('N jobs on each node:')
+    # click.echo('\tNode\tN jobs')
+    # for node, n_jobs in p.jobs_on_nodes.items():
+    #     click.echo(f'\t{node}\t{n_jobs}')
+    p.multi_submit(cmds, len(cmds), job_name, logging_level=logging.INFO)
 
 if __name__ == '__main__':
     cli()

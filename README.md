@@ -82,6 +82,30 @@ p = SlurmPool(  pool_size=None, #how many jobs run in parallel, use all resource
 
 ```bash
 $ autosbatch cmd.sh -j test
+N jobs: 10
+Pool size: 10
+N cpus per job: 2
+Max jobs per node: 75
+Queue: 000, Node: cpu01, N_jobs: 1
+Submitted batch job 238477
+Queue: 001, Node: cpu01, N_jobs: 1
+Submitted batch job 238478
+Queue: 002, Node: cpu01, N_jobs: 1
+Submitted batch job 238479
+Queue: 003, Node: cpu01, N_jobs: 1
+Submitted batch job 238480
+Queue: 004, Node: cpu02, N_jobs: 1
+Submitted batch job 238481
+Queue: 005, Node: cpu02, N_jobs: 1
+Submitted batch job 238482
+Queue: 006, Node: cpu02, N_jobs: 1
+Submitted batch job 238483
+Queue: 007, Node: cpu02, N_jobs: 1
+Submitted batch job 238484
+Queue: 008, Node: cpu03, N_jobs: 1
+Submitted batch job 238485
+Queue: 009, Node: cpu03, N_jobs: 1
+Submitted batch job 238486
 ```
 
 ```bash
