@@ -85,27 +85,17 @@ $ autosbatch cmd.sh -j test
 N jobs: 10
 Pool size: 10
 N cpus per job: 2
-Max jobs per node: 75
-Queue: 000, Node: cpu01, N_jobs: 1
-Submitted batch job 238477
-Queue: 001, Node: cpu01, N_jobs: 1
-Submitted batch job 238478
-Queue: 002, Node: cpu01, N_jobs: 1
-Submitted batch job 238479
-Queue: 003, Node: cpu01, N_jobs: 1
-Submitted batch job 238480
-Queue: 004, Node: cpu02, N_jobs: 1
-Submitted batch job 238481
-Queue: 005, Node: cpu02, N_jobs: 1
-Submitted batch job 238482
-Queue: 006, Node: cpu02, N_jobs: 1
-Submitted batch job 238483
-Queue: 007, Node: cpu02, N_jobs: 1
-Submitted batch job 238484
-Queue: 008, Node: cpu03, N_jobs: 1
-Submitted batch job 238485
-Queue: 009, Node: cpu03, N_jobs: 1
-Submitted batch job 238486
+Max jobs per node: 76
+Queue: test_000, Job ID: 238487, Node: cpu01, N_jobs: 1
+Queue: test_001, Job ID: 238488, Node: cpu01, N_jobs: 1
+Queue: test_002, Job ID: 238489, Node: cpu01, N_jobs: 1
+Queue: test_003, Job ID: 238490, Node: cpu01, N_jobs: 1
+Queue: test_004, Job ID: 238491, Node: cpu02, N_jobs: 1
+Queue: test_005, Job ID: 238492, Node: cpu02, N_jobs: 1
+Queue: test_006, Job ID: 238493, Node: cpu02, N_jobs: 1
+Queue: test_007, Job ID: 238494, Node: cpu02, N_jobs: 1
+Queue: test_008, Job ID: 238495, Node: cpu03, N_jobs: 1
+Queue: test_009, Job ID: 238496, Node: cpu03, N_jobs: 1
 ```
 
 ```bash

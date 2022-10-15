@@ -69,7 +69,7 @@ class SlurmPool:
 
     @classmethod
     def single_submit(
-        cls, partition, node, cpus_per_task, cmds, job_name='test', job_id='001'
+        cls, partition, node, cpus_per_task, cmds, job_name='test', job_id='001', logging_level=logging.ERROR
     ):
         script_head = f'''\
         #!/bin/bash
@@ -90,27 +90,29 @@ class SlurmPool:
         call('mkdir -p ./script/log', shell=True)
         with open(f'./script/scripts_{job_id}.sh', 'w') as f:
             f.write(dedent(script_head))
-            f.write(cmds)
+            f.write('\n'.join(cmds))
             f.write(dedent(cls.script_tail))
         call(f'chmod 755 ./script/scripts_{job_id}.sh', shell=True)
-        call(f'sbatch ./script/scripts_{job_id}.sh', shell=True)
+        slurm_id = check_output(f'sbatch ./script/scripts_{job_id}.sh', shell=True)
+        slurm_id = slurm_id.decode().strip().split()[-1]
+        logging.basicConfig(level=logging_level, format='%(message)s')
+        logging.info(f'Queue: {job_name}_{job_id}, Job ID: {slurm_id}, Node: {node}, N_jobs: {len(cmds)}')
 
     def multi_submit(cls, cmds, n_jobs, job_name, logging_level=logging.ERROR):
-        logging.basicConfig(level=logging_level, format='%(message)s')
         cmd_bin = [[] for _ in range(min(n_jobs, cls.pool_size))]
         for i, cmd in enumerate(cmds, start=1):
             cmd_bin[i % cls.pool_size - 1].append(cmd)
         ith = 0
         for node, n_jobs in cls.jobs_on_nodes.items():
             for _ in range(n_jobs):
-                logging.info(f'Queue: {ith:>03}, Node: {node}, N_jobs: {len(cmd_bin[ith])}')
                 cls.single_submit(
                     cls.nodes.loc[node, 'PARTITION'],
                     node,
                     cls.ncpus_per_job,
-                    '\n'.join(cmd_bin[ith]),
+                    cmd_bin[ith],
                     job_name,
                     f'{ith:>03}',
+                    logging_level
                 )
                 ith += 1
                 if ith >= len(cmd_bin):
