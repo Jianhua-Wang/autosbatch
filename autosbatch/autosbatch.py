@@ -4,6 +4,7 @@ from subprocess import call, check_output
 from textwrap import dedent
 import logging
 import pandas as pd
+import time
 
 
 class SlurmPool:
@@ -17,7 +18,7 @@ class SlurmPool:
     '''
 
     def __init__(
-        self, pool_size=None, ncpus_per_job=2, max_jobs_per_node=None, node_list=None
+        self, pool_size=300, ncpus_per_job=2, max_jobs_per_node=None, node_list=None
     ):
         self.ncpus_per_job = ncpus_per_job
 
@@ -92,6 +93,7 @@ class SlurmPool:
             f.write(dedent(script_head))
             f.write('\n'.join(cmds))
             f.write(dedent(cls.script_tail))
+        time.sleep(0.5)
         call(f'chmod 755 ./script/scripts_{job_id}.sh', shell=True)
         slurm_id = check_output(f'sbatch ./script/scripts_{job_id}.sh', shell=True)
         slurm_id = slurm_id.decode().strip().split()[-1]
