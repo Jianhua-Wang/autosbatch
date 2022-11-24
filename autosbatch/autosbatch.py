@@ -47,7 +47,7 @@ class SlurmPool:
         self.jobs_on_nodes = jobs_on_nodes.where(
             jobs_on_nodes <= self.max_jobs_per_node, self.max_jobs_per_node
         )
-        max_pool_size = min(sum(self.jobs_on_nodes), 300)
+        max_pool_size = min(sum(self.jobs_on_nodes), 1000)
 
         if pool_size:
             if pool_size > max_pool_size:
@@ -93,7 +93,7 @@ class SlurmPool:
             f.write(dedent(script_head))
             f.write('\n'.join(cmds))
             f.write(dedent(cls.script_tail))
-        time.sleep(0.5)
+        time.sleep(1)
         call(f'chmod 755 ./script/scripts_{job_id}.sh', shell=True)
         slurm_id = check_output(f'sbatch ./script/scripts_{job_id}.sh', shell=True)
         slurm_id = slurm_id.decode().strip().split()[-1]
