@@ -18,7 +18,7 @@ class SlurmPool:
     '''
 
     def __init__(
-        self, pool_size=None, ncpus_per_job=2, max_jobs_per_node=None, node_list=None
+        self, pool_size=None, ncpus_per_job=2, max_jobs_per_node=None, node_list=None, max_pool_size=1000
     ):
         self.ncpus_per_job = ncpus_per_job
 
@@ -47,7 +47,7 @@ class SlurmPool:
         self.jobs_on_nodes = jobs_on_nodes.where(
             jobs_on_nodes <= self.max_jobs_per_node, self.max_jobs_per_node
         )
-        max_pool_size = min(sum(self.jobs_on_nodes), 1000)
+        max_pool_size = min(sum(self.jobs_on_nodes), max_pool_size)
 
         if pool_size:
             if pool_size > max_pool_size:
