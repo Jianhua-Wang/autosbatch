@@ -28,6 +28,5 @@ setup(
     keywords='slurm batch job submit',
     python_requires='>=3.5',
     install_requires=['pandas>=1.3.4'],
-    entry_points={'console_scripts': ['autosbatch = autosbatch.cli:cli',]},
+    entry_points={'console_scripts': ['autosbatch = autosbatch.cli:cli']},
 )
-

@@ -100,17 +100,17 @@ class SlurmPool:
         logging.basicConfig(level=logging_level, format='%(message)s')
         logging.info(f'Queue: {job_name}_{job_id}, Job ID: {slurm_id}, Node: {node}, N_jobs: {len(cmds)}')
 
-    def multi_submit(cls, cmds, n_jobs, job_name, logging_level=logging.ERROR):
-        cmd_bin = [[] for _ in range(min(n_jobs, cls.pool_size))]
+    def multi_submit(self, cmds, n_jobs, job_name, logging_level=logging.ERROR):
+        cmd_bin = [[] for _ in range(min(n_jobs, self.pool_size))]
         for i, cmd in enumerate(cmds, start=1):
-            cmd_bin[i % cls.pool_size - 1].append(cmd)
+            cmd_bin[i % self.pool_size - 1].append(cmd)
         ith = 0
-        for node, n_jobs in cls.jobs_on_nodes.items():
+        for node, n_jobs in self.jobs_on_nodes.items():
             for _ in range(n_jobs):
-                cls.single_submit(
-                    cls.nodes.loc[node, 'PARTITION'],
+                self.single_submit(
+                    self.nodes.loc[node, 'PARTITION'],
                     node,
-                    cls.ncpus_per_job,
+                    self.ncpus_per_job,
                     cmd_bin[ith],
                     job_name,
                     f'{ith:>03}',
