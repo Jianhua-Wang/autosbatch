@@ -1,7 +1,7 @@
 [tool]
 [tool.poetry]
 name = "autosbatch"
-version = "0.1.2"
+version = "0.1.3"
 homepage = "https://github.com/Jianhua-Wang/autosbatch"
 description = "submit hundreds of jobs to slurm automatically."
 authors = ["Jianhua Wang <jianhua.mert@gmail.com>"]
