@@ -1,1 +1,5 @@
-from .autosbatch import *
+"""Top-level package for autosbatch."""
+
+__author__ = """Jianhua Wang"""
+__email__ = 'jianhua.mert@gmail.com'
+__version__ = '0.0.1'

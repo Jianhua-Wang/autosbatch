@@ -1,136 +1,26 @@
 # autosbatch
 
-Sometimes, it's quite inconvenient when we submit hundreds of jobs to slurm. For example, one needs to align RNA-seq data from one hundred samples. He may start with a bash script that takes the fastq of one sample and write sbatch scripts which execute `bash align.sh sample.fq` multiple times. If he wants to run 50 samples at the same time, he should write 50 sbatch scripts and each script contains two align commands. Manually managing these sbatch scripts is inconvenient. autosbatch is very helpful for submitting slurm jobs automatically and it's just like the `multiprocessing.Pool`.
 
-## Install
+[![pypi](https://img.shields.io/pypi/v/autosbatch.svg)](https://pypi.org/project/autosbatch/)
+[![python](https://img.shields.io/pypi/pyversions/autosbatch.svg)](https://pypi.org/project/autosbatch/)
+[![Build Status](https://github.com/Jianhua-Wang/autosbatch/actions/workflows/dev.yml/badge.svg)](https://github.com/Jianhua-Wang/autosbatch/actions/workflows/dev.yml)
+[![codecov](https://codecov.io/gh/Jianhua-Wang/autosbatch/branch/main/graphs/badge.svg)](https://codecov.io/github/Jianhua-Wang/autosbatch)
 
-```bash
-git clone https://github.com:Jianhua-Wang/autosbatch.git
-cd autosbatch
-pip install .
-```
 
-## Usage
 
-### import
-```python
-from autosbatch import SlurmPool
-```
+submit hundreds of jobs to slurm automatically
 
-### submit single job
 
-```python
-SlurmPool.single_submit(partition='cpuPartition',
-                        node='cpu01',
-                        cpus_per_task=1,
-                        cmds='sleep 10',
-                        job_name='test',
-                        job_id='001')
+* Documentation: <https://Jianhua-Wang.github.io/autosbatch>
+* GitHub: <https://github.com/Jianhua-Wang/autosbatch>
+* PyPI: <https://pypi.org/project/autosbatch/>
+* Free software: MIT
 
-```
 
-### submit multiple job
+## Features
 
-single parameter (similar with `multiprocessing.Pool.map`)
+* TODO
 
-```python
-def sleep(time):
-    cmd = f'sleep {time}'
-    return cmd
+## Credits
 
-params = range(10)
-
-p = SlurmPool(10)
-p.map(sleep, params)
-```
-
-multiple parameters (similar with `multiprocessing.Pool.starmap`)
-
-```python
-params = []
-for text in range(5):
-    for time in range(6):
-        params.append([text, time])
-
-def echo_sleep(text, time):
-    cmd = f'echo {text} && sleep {time}'
-    return cmd
-
-p = SlurmPool(10)
-p.starmap(echo_sleep, params)
-```
-
-The sbatch scripts are put in `./script`. The error and stdout logs are in `./script/log`.
-
-remove `script` dir:
-
-```python
-SlurmPool.clean()
-```
-
-Custom the job Pool:
-
-```python
-p = SlurmPool(  pool_size=None, #how many jobs run in parallel, use all resources if not specify.
-                ncpus_per_job=2, #how many cpus per job use
-                max_jobs_per_node=None, #how many jobs can a node run at most
-                node_list=None # use all nodes if not specify
-                )
-```
-
-### Use command line
-
-```bash
-$ autosbatch cmd.sh -j test
-N jobs: 10
-Pool size: 10
-N cpus per job: 2
-Max jobs per node: 76
-Queue: test_000, Job ID: 238487, Node: cpu01, N_jobs: 1
-Queue: test_001, Job ID: 238488, Node: cpu01, N_jobs: 1
-Queue: test_002, Job ID: 238489, Node: cpu01, N_jobs: 1
-Queue: test_003, Job ID: 238490, Node: cpu01, N_jobs: 1
-Queue: test_004, Job ID: 238491, Node: cpu02, N_jobs: 1
-Queue: test_005, Job ID: 238492, Node: cpu02, N_jobs: 1
-Queue: test_006, Job ID: 238493, Node: cpu02, N_jobs: 1
-Queue: test_007, Job ID: 238494, Node: cpu02, N_jobs: 1
-Queue: test_008, Job ID: 238495, Node: cpu03, N_jobs: 1
-Queue: test_009, Job ID: 238496, Node: cpu03, N_jobs: 1
-```
-
-```bash
-$ cat cmd.sh
-sleep 0
-sleep 1
-sleep 2
-sleep 3
-sleep 4
-sleep 5
-sleep 6
-sleep 7
-sleep 8
-sleep 9
-
-```
-
-help message:
-
-```
-$ autosbatch --help                                                   
-Usage: autosbatch [OPTIONS] CMDFILE
-
-  autosbatch --ncpus-per-job 10 cmd.sh
-
-Options:
-  -p, --pool-size INTEGER         How many jobs do you want to run in
-                                  parallel. Use all resources if None.
-  -n, --ncpus-per-job INTEGER     How many cpus per job uses, default=2
-  -M, --max-jobs-per-node INTEGER
-                                  how many jobs can a node run in parallel at
-                                  most
-  -N, --node-list TEXT            specify the nodes you want to use, separated
-                                  by commas, e.g. 'cpu01,cpu02,cpu03', use as
-                                  many as you can if None
-  -j, --job-name TEXT             job name prefix, default=test
-  --help                          Show this message and exit.
-```
+This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [waynerv/cookiecutter-pypackage](https://github.com/waynerv/cookiecutter-pypackage) project template.
