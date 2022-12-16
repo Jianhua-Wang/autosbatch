@@ -5,7 +5,7 @@
 [![python](https://img.shields.io/pypi/pyversions/autosbatch.svg)](https://pypi.org/project/autosbatch/)
 [![Build Status](https://github.com/Jianhua-Wang/autosbatch/actions/workflows/dev.yml/badge.svg)](https://github.com/Jianhua-Wang/autosbatch/actions/workflows/dev.yml)
 [![codecov](https://codecov.io/gh/Jianhua-Wang/autosbatch/branch/main/graphs/badge.svg)](https://codecov.io/github/Jianhua-Wang/autosbatch)
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 submit hundreds of jobs to slurm automatically
