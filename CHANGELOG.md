@@ -30,3 +30,16 @@ Here we would have the update steps for 1.2.4 for people to follow.
   MINOR Fix module foo tests
 - [PROJECTNAME-RRRR](http://tickets.projectname.com/browse/PROJECTNAME-RRRR)
   MAJOR Module foo's timeline uses the browser timezone for date resolution
+
+## [0.1.2] - 2022-12-16
+ 
+### Added
+   
+### Changed
+ 
+### Fixed
+ 
+- [PROJECTNAME-UUUU](http://tickets.projectname.com/browse/PROJECTNAME-UUUU)
+  MINOR Fix module foo tests
+- [PROJECTNAME-RRRR](http://tickets.projectname.com/browse/PROJECTNAME-RRRR)
+  MAJOR Module foo's timeline uses the browser timezone for date resolution
