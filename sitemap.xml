@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://Jianhua-Wang.github.io/autosbatch/</loc>
+         <lastmod>2022-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Jianhua-Wang.github.io/autosbatch/api/</loc>
+         <lastmod>2022-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Jianhua-Wang.github.io/autosbatch/changelog/</loc>
+         <lastmod>2022-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Jianhua-Wang.github.io/autosbatch/contributing/</loc>
+         <lastmod>2022-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Jianhua-Wang.github.io/autosbatch/installation/</loc>
+         <lastmod>2022-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Jianhua-Wang.github.io/autosbatch/usage/</loc>
+         <lastmod>2022-12-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
