@@ -17,7 +17,7 @@ import logging
                    "you can if None")
 @click.option('-j', '--job-name', 'job_name', type=str, help="job name prefix, default=test", default='test')
 @click.argument('cmdfile', type=click.Path(exists=True), )
-def cli(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_name):
+def main(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_name):
     """
         autosbatch --ncpus-per-job 10 cmd.sh
     """
@@ -37,4 +37,4 @@ def cli(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_nam
 
 
 if __name__ == '__main__':
-    cli()
+    main()
