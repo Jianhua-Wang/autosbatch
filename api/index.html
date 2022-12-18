@@ -301,11 +301,65 @@
     autosbatch
   </a>
   
+    <nav class="md-nav" aria-label="autosbatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool" class="md-nav__link">
+    SlurmPool
+  </a>
+  
+    <nav class="md-nav" aria-label="SlurmPool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.clean" class="md-nav__link">
+    clean()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.get_nodes" class="md-nav__link">
+    get_nodes()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.map" class="md-nav__link">
+    map()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.starmap" class="md-nav__link">
+    starmap()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#autosbatch.cli" class="md-nav__link">
     cli
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autosbatch.logger" class="md-nav__link">
+    logger
   </a>
   
 </li>
@@ -384,11 +438,65 @@
     autosbatch
   </a>
   
+    <nav class="md-nav" aria-label="autosbatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool" class="md-nav__link">
+    SlurmPool
+  </a>
+  
+    <nav class="md-nav" aria-label="SlurmPool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.clean" class="md-nav__link">
+    clean()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.get_nodes" class="md-nav__link">
+    get_nodes()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.map" class="md-nav__link">
+    map()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.starmap" class="md-nav__link">
+    starmap()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#autosbatch.cli" class="md-nav__link">
     cli
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autosbatch.logger" class="md-nav__link">
+    logger
   </a>
   
 </li>
@@ -463,6 +571,203 @@
 
 
 
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="autosbatch.autosbatch.SlurmPool" class="doc doc-heading">
+        <code>
+SlurmPool        </code>
+
+
+
+<a href="#autosbatch.autosbatch.SlurmPool" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A class for submitting jobs to Slurm.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.clean" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">clean</span><span class="p">()</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#autosbatch.autosbatch.SlurmPool.clean" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Clean up the scripts and log files</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files&quot;&quot;&quot;</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">FILE_DIR</span><span class="p">]</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.get_nodes" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">get_nodes</span><span class="p">(</span><span class="n">sortByload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#autosbatch.autosbatch.SlurmPool.get_nodes" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Get nodes information from sinfo.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">get_nodes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sortByload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OrderedDict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Get nodes information from sinfo.&quot;&quot;&quot;</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sinfo&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;%n </span><span class="si">%e</span><span class="s1"> %m </span><span class="si">%a</span><span class="s1"> </span><span class="si">%c</span><span class="s1"> %C %O %R %t&quot;&#39;</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&quot;</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;HOSTNAMES&#39;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">node</span><span class="p">,</span> <span class="n">free_mem</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">avail</span><span class="p">,</span> <span class="n">cpus</span><span class="p">,</span> <span class="n">free_cpus</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+        <span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;free_mem&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">free_mem</span><span class="p">),</span>
+            <span class="s1">&#39;used_mem&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">memory</span><span class="p">)</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">free_mem</span><span class="p">),</span>
+            <span class="s1">&#39;memory&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">memory</span><span class="p">),</span>
+            <span class="s1">&#39;AVAIL&#39;</span><span class="p">:</span> <span class="n">avail</span><span class="p">,</span>
+            <span class="s1">&#39;cpus&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">cpus</span><span class="p">),</span>
+            <span class="s1">&#39;used_cpus&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">free_cpus</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="s1">&#39;free_cpus&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">free_cpus</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="s1">&#39;load&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">load</span><span class="p">),</span>
+            <span class="s1">&#39;partition&#39;</span><span class="p">:</span> <span class="n">partition</span><span class="p">,</span>
+            <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="k">if</span> <span class="n">sortByload</span><span class="p">:</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+            <span class="nb">sorted</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;load&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;used_mem&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;used_cpus&#39;</span><span class="p">]))</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.map" class="doc doc-heading">
+<code class="highlight language-python"><span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.autosbatch.SlurmPool.map" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    func: function</span>
+<span class="sd">    params: list</span>
+<span class="sd">    return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">multi_submit</span><span class="p">(</span><span class="n">cmds</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.starmap" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">starmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.autosbatch.SlurmPool.starmap" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">starmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Iterable</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    func: function</span>
+<span class="sd">    params: list of tuple</span>
+<span class="sd">    return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">multi_submit</span><span class="p">(</span><span class="n">cmds</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
 
 
 
@@ -491,6 +796,44 @@
 
       <p>Console script for autosbatch.</p>
 
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="autosbatch.logger" class="doc doc-heading">
+        <code>logger</code>
+
+
+
+<a href="#autosbatch.logger" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Logging configuration for autosbatch.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
 
     </div>
 
