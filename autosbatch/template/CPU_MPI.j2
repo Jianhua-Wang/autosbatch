@@ -1,0 +1,60 @@
+#!/bin/bash -l
+# Standard output and error:
+#SBATCH -o ./{{ job_name }}.out.%j
+#SBATCH -e ./{{ job_name }}.err.%j
+# Initial working directory:
+#SBATCH -D ./
+# Job Name:
+#SBATCH -J {{ job_name }}
+#
+# Queue (Partition):
+{%- if gpu %}
+#SBATCH --partition=gpu
+#SBATCH --constraint='gpu'
+{%- else %}
+{%- if time is lessthan 30 or time is equalto 30 %}
+#SBATCH --partition=express
+{%- elif time is greaterthan 30 and time is lessthan 240 or time is equalto 240 %}
+#SBATCH --partition=short
+{%- else %}
+#SBATCH --partition=general
+{%- endif %}
+{%- endif %}
+#
+# Request {{ n_nodes }} node(s)
+#SBATCH --nodes={{ n_nodes }}
+# Set the number of tasks per node (=MPI ranks)
+#SBATCH --ntasks-per-node={{ number_of_ranks }}
+# Set the number of threads per rank (=OpenMP threads)
+#SBATCH --cpus-per-task={{ number_of_threads }}
+{% if hyperthreading %}
+# Enable hyperthreading
+#SBATCH --ntasks-per-core=2
+{%- endif %}
+# Wall clock limit:
+#SBATCH --time={{ formatted_time }}
+
+module purge
+module load impi
+module load cuda
+module load {{ module }}
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+{% if hyperthreading %}
+export OMP_PLACES=threads
+export SLURM_HINT=multithread
+{%- else %}
+export OMP_PLACES=cores
+{%- endif %}
+
+# Run {{ module }} for {{ time  }} minutes
+srun gmx_mpi mdrun -v -ntomp $OMP_NUM_THREADS -maxh {{ time / 60 }} -resethway -noconfout -deffnm {{ name }}
+
+# Running multiple simulations on a single node (multidir)
+# If you want to run multiple simulations on the same node, use the `multidir`
+# variable, like so:
+#
+# srun gmx_mpi mdrun -v -ntomp $OMP_NUM_THREADS -maxh {{ time / 60 }} -resethway -noconfout -deffnm {{ name }} {{ multidir }}
+#
+# MDBenchmark will set up the folder structure as required by GROMACS and
+# replace the variable.

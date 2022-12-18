@@ -54,3 +54,16 @@ Here we would have the update steps for 1.2.4 for people to follow.
 - Reconstruct the project structure
 
 ### Fixed
+
+## [0.1.4] - 2022-12-17
+
+### Added
+
+
+### Changed
+
+- Use jinja2 as sbatch template
+- change script dir to .autosbatch
+- get rid of pandas
+
+### Fixed

@@ -113,3 +113,6 @@ ENV/
 
 # mkdocs build dir
 site/
+
+# autosbatch log files
+.autosbatch/

@@ -4,6 +4,7 @@ from autosbatch import SlurmPool
 import click
 import logging
 
+# TODO: replace click with typer
 
 @click.command()
 @click.option('-p', '--pool-size', 'pool_size', type=int,
