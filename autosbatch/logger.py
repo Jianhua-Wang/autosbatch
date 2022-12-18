@@ -1,5 +1,6 @@
 """Logging configuration for autosbatch."""
 import logging
+
 from rich.logging import RichHandler
 
 logging.basicConfig(

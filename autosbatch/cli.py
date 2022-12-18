@@ -1,8 +1,10 @@
 """Console script for autosbatch."""
 
-from autosbatch import SlurmPool
-import click
 import logging
+
+import click
+
+from autosbatch import SlurmPool
 
 # TODO: replace click with typer
 
@@ -31,11 +33,12 @@ import logging
 )
 @click.option('-j', '--job-name', 'job_name', type=str, help="job name prefix, default=test", default='test')
 @click.argument(
-    'cmdfile', type=click.Path(exists=True),
+    'cmdfile',
+    type=click.Path(exists=True),
 )
 def main(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_name):
     """
-        autosbatch --ncpus-per-job 10 cmd.sh
+    autosbatch --ncpus-per-job 10 cmd.sh
     """
     with open(cmdfile, 'r') as f:
         cmds = f.readlines()

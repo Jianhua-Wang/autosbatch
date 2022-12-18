@@ -105,7 +105,8 @@ class SlurmPool:
         self.nodes = {k: v for k, v in self.nodes.items() if v['free_cpus'] >= self.ncpus_per_job}
 
     def _set_max_jobs_per_node(
-        self, max_jobs_per_node: Optional[int] = None,
+        self,
+        max_jobs_per_node: Optional[int] = None,
     ):
         """Set max_jobs_per_node."""
         if self.ncpus_per_job & 0x1:
@@ -128,7 +129,9 @@ class SlurmPool:
             self.max_jobs_per_node = avail_max_jobs_per_node
 
     def _set_pool_size(
-        self, pool_size: Optional[int] = None, max_pool_size: Optional[int] = None,
+        self,
+        pool_size: Optional[int] = None,
+        max_pool_size: Optional[int] = None,
     ):
         """Set pool_size."""
         max_pool_size = min(sum(self.jobs_on_nodes.values()), max_pool_size)
