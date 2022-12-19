@@ -71,3 +71,18 @@ Here we would have the update steps for 1.2.4 for people to follow.
 - save job information to a file
 
 ### Fixed
+
+## [0.1.5] - 2022-12-19
+
+### Added
+
+- clean command
+- multi submit command
+- single submit command
+
+### Changed
+
+- replace click with typer
+
+### Fixed
+

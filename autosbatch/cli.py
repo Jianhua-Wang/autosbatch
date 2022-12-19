@@ -1,53 +1,104 @@
 """Console script for autosbatch."""
 
 import logging
+from pathlib import Path
+from typing import List
 
-import click
-
-from autosbatch import SlurmPool
-
-# TODO: replace click with typer
+import typer
+from rich.console import Console
 
 
-@click.command()
-@click.option(
-    '-p',
-    '--pool-size',
-    'pool_size',
-    type=int,
-    help="How many jobs do you want to run in parallel. Use all resources if None.",
-)
-@click.option(
-    '-n', '--ncpus-per-job', 'ncpus_per_job', type=int, help="How many cpus per job uses, default=2", default=1
-)
-@click.option(
-    '-M', '--max-jobs-per-node', 'max_jobs_per_node', type=int, help="how many jobs can a node run in parallel at most"
-)
-@click.option(
-    '-N',
-    '--node-list',
-    'node_list',
-    type=str,
-    help="specify the nodes you want to use, separated by commas, e.g. 'cpu01,cpu02,cpu03', use as many as "
-    "you can if None",
-)
-@click.option('-j', '--job-name', 'job_name', type=str, help="job name prefix, default=test", default='test')
-@click.argument(
-    'cmdfile',
-    type=click.Path(exists=True),
-)
-def main(pool_size, ncpus_per_job, max_jobs_per_node, node_list, cmdfile, job_name):
-    """
-    autosbatch --ncpus-per-job 10 cmd.sh
-    """
+from autosbatch import SlurmPool, __version__
+from autosbatch.logger import logger
+
+# TODO: add docs
+
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+app = typer.Typer(context_settings=CONTEXT_SETTINGS, add_completion=False)
+
+config = {
+    'logging_level': logging.WARNING,
+}
+
+
+@app.command()
+def single_job(
+    ncpus: int = typer.Option(1, '--ncpus', '-n', help='Number of cpus.'),
+    node: str = typer.Option(None, '--node', '-N', help='Node to submit job to.'),
+    partition: str = typer.Option(None, '--partition', '-P', help='Partition to submit jobs to.'),
+    job_name: str = typer.Option('job', '--job-name', '-j', help='Name of the job.'),
+    cmd: List[str] = typer.Argument(..., help='Command to run.'),
+):
+    """submit a single job to slurm cluster"""
+    cmd = [' '.join(cmd)]
+    if node:
+        node_list = [node]
+    else:
+        node_list = None
+    p = SlurmPool(pool_size=1, ncpus_per_job=ncpus, node_list=node_list, partition=partition,)
+    p.multi_submit(cmds=cmd, job_name=job_name, logging_level=config['logging_level'])
+
+
+@app.command()
+def multi_job(
+    pool_size: int = typer.Option(
+        None, '--pool-size', '-p', min=0, max=1000, help='Number of jobs to submit at the same time.'
+    ),
+    ncpus_per_job: int = typer.Option(1, '--ncpus-per-job', '-n', help='Number of cpus per job.'),
+    max_jobs_per_node: int = typer.Option(
+        None, '--max-jobs-per-node', '-m', help='Maximum number of jobs to submit to a single node.'
+    ),
+    node_list: List[str] = typer.Option(
+        None, '--node-list', '-l', help='List of nodes to submit jobs to. e.g. "-l node1 -l node2 -l node3"'
+    ),
+    partition: str = typer.Option(None, '--partition', '-P', help='Partition to submit jobs to.'),
+    job_name: str = typer.Option('job', '--job-name', '-j', help='Name of the job.'),
+    cmdfile: Path = typer.Argument(..., help='Path to the command file.'),
+):
+    """submit multiple jobs to slurm cluster"""
     with open(cmdfile, 'r') as f:
         cmds = f.readlines()
     cmds = [cmd.strip() for cmd in cmds]
-    if node_list:
-        node_list = node_list.split(',')
-    p = SlurmPool(ncpus_per_job=ncpus_per_job, max_jobs_per_node=max_jobs_per_node, node_list=node_list)
-    p.multi_submit(cmds, job_name, logging_level=logging.INFO)
+
+    p = SlurmPool(
+        pool_size=pool_size,
+        ncpus_per_job=ncpus_per_job,
+        max_jobs_per_node=max_jobs_per_node,
+        node_list=node_list,
+        partition=partition,
+    )
+    p.multi_submit(cmds=cmds, job_name=job_name, logging_level=config['logging_level'])
+
+
+@app.command()
+def clean():
+    """remove all scripts and logs."""
+    SlurmPool.clean()
+    logger.setLevel(config['logging_level'])
+    logger.info('Cleaned all scripts and logs.')
+
+
+@app.callback(invoke_without_command=True, no_args_is_help=True)
+def main(
+    version: bool = typer.Option(False, '--version', '-V', help='Show version.'),
+    verbose: bool = typer.Option(False, '--verbose', '-v', help='Show verbose info.'),
+    dev: bool = typer.Option(False, '--dev', help='Show dev info.'),
+):
+    """
+    submit jobs to slurm cluster, without writing slurm script files.
+    """
+    console = Console()
+    console.rule("[bold blue]AutoSbatch[/bold blue]")
+    if version:
+        typer.echo(f'AutoSbatch version: {__version__}')
+        raise typer.Exit()
+    if verbose:
+        config['logging_level'] = logging.INFO
+        logger.info('Verbose mode is on.')
+    if dev:
+        config['logging_level'] = logging.DEBUG
+        logger.debug('Dev mode is on.')
 
 
 if __name__ == '__main__':
-    main()
+    app()
