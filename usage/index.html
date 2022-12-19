@@ -279,6 +279,94 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-for-package" class="md-nav__link">
+    Usage for package
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage for package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    Import
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-single-job" class="md-nav__link">
+    submit single job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-multiple-job" class="md-nav__link">
+    submit multiple job
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-for-cli-tool" class="md-nav__link">
+    Usage for CLI tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage for CLI tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help-message" class="md-nav__link">
+    help message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-single-job" class="md-nav__link">
+    Command: single-job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-multi-job" class="md-nav__link">
+    Command: multi-job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-clean" class="md-nav__link">
+    Command: clean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-verbose" class="md-nav__link">
+    enable verbose
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -363,6 +451,94 @@
     Usage
   </a>
   
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-for-package" class="md-nav__link">
+    Usage for package
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage for package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    Import
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-single-job" class="md-nav__link">
+    submit single job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-multiple-job" class="md-nav__link">
+    submit multiple job
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-for-cli-tool" class="md-nav__link">
+    Usage for CLI tool
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage for CLI tool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help-message" class="md-nav__link">
+    help message
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-single-job" class="md-nav__link">
+    Command: single-job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-multi-job" class="md-nav__link">
+    Command: multi-job
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-clean" class="md-nav__link">
+    Command: clean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-verbose" class="md-nav__link">
+    enable verbose
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -388,9 +564,204 @@
   <h1>Usage</h1>
 
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use autosbatch in a project</p>
-<div class="highlight"><pre><span></span><code>import autosbatch
+<h3 id="usage-for-package">Usage for package<a class="headerlink" href="#usage-for-package" title="Permanent link">&para;</a></h3>
+<h4 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">autosbatch</span>
+<span class="c1"># or import SlurmPool directly</span>
+<span class="kn">from</span> <span class="nn">autosbatch</span> <span class="kn">import</span> <span class="n">SlurmPool</span>
 </code></pre></div>
+<h4 id="submit-single-job">submit single job<a class="headerlink" href="#submit-single-job" title="Permanent link">&para;</a></h4>
+<p>run <code>sleep 10</code> on node <code>cpu01</code> on <code>cpuPartition</code> paritition.
+<div class="highlight"><pre><span></span><code><span class="n">SlurmPool</span><span class="o">.</span><span class="n">single_submit</span><span class="p">(</span><span class="n">partition</span><span class="o">=</span><span class="s1">&#39;cpuPartition&#39;</span><span class="p">,</span>
+                        <span class="n">node</span><span class="o">=</span><span class="s1">&#39;cpu01&#39;</span><span class="p">,</span>
+                        <span class="n">cpus_per_task</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">cmds</span><span class="o">=</span><span class="s1">&#39;sleep 10&#39;</span><span class="p">,</span>
+                        <span class="n">job_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                        <span class="n">job_id</span><span class="o">=</span><span class="s1">&#39;001&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>or run a job containing two steps, e.g. <code>echo hello</code> and <code>sleep 10</code>
+<div class="highlight"><pre><span></span><code><span class="n">SlurmPool</span><span class="o">.</span><span class="n">single_submit</span><span class="p">(</span><span class="n">partition</span><span class="o">=</span><span class="s1">&#39;cpuPartition&#39;</span><span class="p">,</span>
+                        <span class="n">node</span><span class="o">=</span><span class="s1">&#39;cpu01&#39;</span><span class="p">,</span>
+                        <span class="n">cpus_per_task</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">cmds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;echo hello&#39;</span><span class="p">,</span><span class="s1">&#39;sleep 10&#39;</span><span class="p">],</span>
+                        <span class="n">job_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
+                        <span class="n">job_id</span><span class="o">=</span><span class="s1">&#39;001&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+<h4 id="submit-multiple-job">submit multiple job<a class="headerlink" href="#submit-multiple-job" title="Permanent link">&para;</a></h4>
+<p>TODO: compare multiprocessing.Pool.map
+TODO: add with syntax</p>
+<p>Just like <code>multiprocessing.Pool.map</code>
+<div class="highlight"><pre><span></span><code><span class="c1"># construct the excutor</span>
+<span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;sleep </span><span class="si">{</span><span class="n">time</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">cmd</span>
+
+<span class="c1"># prepare the param for each excutor</span>
+<span class="n">params</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># submit to parallel run</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SlurmPool</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sleep</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</code></pre></div></p>
+<p>multiple parameters (similar with <code>multiprocessing.Pool.starmap</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># construct the excutor</span>
+<span class="k">def</span> <span class="nf">echo_sleep</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;echo </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1"> &amp;&amp; sleep </span><span class="si">{</span><span class="n">time</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">return</span> <span class="n">cmd</span>
+
+<span class="c1"># prepare the params for each excutor</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">text</span><span class="p">,</span> <span class="n">time</span><span class="p">])</span>
+
+<span class="c1"># submit to parallel run</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">SlurmPool</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">echo_sleep</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</code></pre></div>
+<p>The sbatch scripts are put in <code>./autosbatch/$timenow/script</code>. The error and stdout logs are in <code>./autosbatch/$timenow/log</code>.</p>
+<p>remove <code>script</code> dir:</p>
+<div class="highlight"><pre><span></span><code><span class="n">SlurmPool</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+</code></pre></div>
+<p>Custom the job Pool:
+<div class="highlight"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="n">SlurmPool</span><span class="p">(</span>  <span class="n">pool_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1">#how many jobs run in parallel, use all resources if not specify.</span>
+                <span class="n">ncpus_per_job</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="c1">#how many cpus per job use</span>
+                <span class="n">max_jobs_per_node</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="c1">#how many jobs can a node run at most</span>
+                <span class="n">node_list</span><span class="o">=</span><span class="kc">None</span> <span class="c1"># use all nodes if not specify</span>
+                <span class="p">)</span>
+</code></pre></div></p>
+<h3 id="usage-for-cli-tool">Usage for CLI tool<a class="headerlink" href="#usage-for-cli-tool" title="Permanent link">&para;</a></h3>
+<h4 id="help-message">help message<a class="headerlink" href="#help-message" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ autosbatch --help
+
+ Usage: autosbatch <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+
+ Submit <span class="nb">jobs</span> to slurm cluster, without writing slurm script files.
+
+╭─ Options ───────────────────────────────────────────────────────────────────────╮
+│ --version  -V        Show version.                                              │
+│ --verbose  -v        Show verbose info.                                         │
+│ --dev                Show dev info.                                             │
+│ --help     -h        Show this message and exit.                                │
+╰─────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ──────────────────────────────────────────────────────────────────────╮
+│ clean              Remove all scripts and logs.                                 │
+│ multi-job          Submit multiple <span class="nb">jobs</span> to slurm cluster.                       │
+│ single-job         Submit a single job to slurm cluster.                        │
+╰─────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div>
+<h4 id="command-single-job">Command: single-job<a class="headerlink" href="#command-single-job" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ autosbatch single-job -h
+─────────────────────────────────── AutoSbatch ────────────────────────────────────
+
+ Usage: autosbatch single-job <span class="o">[</span>OPTIONS<span class="o">]</span> CMD...
+
+ Submit a single job to slurm cluster.
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────────╮
+│ *    cmd      CMD...  Command to run. <span class="o">[</span>default: None<span class="o">]</span> <span class="o">[</span>required<span class="o">]</span>                │
+╰─────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────╮
+│ --ncpus      -n      INTEGER  Number of cpus. <span class="o">[</span>default: <span class="m">1</span><span class="o">]</span>                      │
+│ --node       -N      TEXT     Node to submit job to. <span class="o">[</span>default: None<span class="o">]</span>            │
+│ --partition  -P      TEXT     Partition to submit <span class="nb">jobs</span> to. <span class="o">[</span>default: None<span class="o">]</span>      │
+│ --job-name   -j      TEXT     Name of the job. <span class="o">[</span>default: job<span class="o">]</span>                   │
+│ --help       -h               Show this message and exit.                       │
+╰─────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div>
+<p>run example command such as <code>sleep 10</code>
+<div class="highlight"><pre><span></span><code>autosbatch single-job sleep <span class="m">10</span>
+─────────────────────────────────── AutoSbatch ────────────────────────────────────
+<span class="o">[</span><span class="m">22</span>:13:46<span class="o">]</span> WARNING  Hyperthreading is enabled on cpu14, ncpus_per_job is <span class="nb">set</span> to <span class="m">2</span>.
+</code></pre></div></p>
+<h4 id="command-multi-job">Command: multi-job<a class="headerlink" href="#command-multi-job" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$ autosbatch multi-job -h
+─────────────────────────────────── AutoSbatch ────────────────────────────────────
+
+ Usage: autosbatch multi-job <span class="o">[</span>OPTIONS<span class="o">]</span> CMDFILE
+
+ Submit multiple <span class="nb">jobs</span> to slurm cluster.
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────────╮
+│ *    cmdfile      PATH  Path to the <span class="nb">command</span> file. <span class="o">[</span>default: None<span class="o">]</span> <span class="o">[</span>required<span class="o">]</span>    │
+╰─────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────╮
+│ --pool-size          -p      INTEGER RANGE             Number of <span class="nb">jobs</span> to submit │
+│                              <span class="o">[</span><span class="m">0</span>&lt;<span class="o">=</span>x&lt;<span class="o">=</span><span class="m">1000</span><span class="o">]</span>              at the same time.        │
+│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
+│ --ncpus-per-job      -n      INTEGER                   Number of cpus per job.  │
+│                                                        <span class="o">[</span>default: <span class="m">1</span><span class="o">]</span>             │
+│ --max-jobs-per-node  -m      INTEGER                   Maximum number of <span class="nb">jobs</span>   │
+│                                                        to submit to a single    │
+│                                                        node.                    │
+│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
+│ --node-list          -l      TEXT                      List of nodes to submit  │
+│                                                        <span class="nb">jobs</span> to. e.g. <span class="s2">&quot;-l node1  │</span>
+<span class="s2">│                                                        -l node2 -l node3&quot;</span>       │
+│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
+│ --partition          -P      TEXT                      Partition to submit <span class="nb">jobs</span> │
+│                                                        to.                      │
+│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
+│ --job-name           -j      TEXT                      Name of the job.         │
+│                                                        <span class="o">[</span>default: job<span class="o">]</span>           │
+│ --help               -h                                Show this message and    │
+│                                                        exit.                    │
+╰─────────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div>
+<p>submit 10 commands to slurm</p>
+<p>Step1. write the commands into a text file, one command per line.
+<div class="highlight"><pre><span></span><code>$ cat ./cmd.sh
+sleep <span class="m">0</span>
+sleep <span class="m">1</span>
+sleep <span class="m">2</span>
+sleep <span class="m">3</span>
+sleep <span class="m">4</span>
+sleep <span class="m">5</span>
+sleep <span class="m">6</span>
+sleep <span class="m">7</span>
+sleep <span class="m">8</span>
+sleep <span class="m">9</span>
+</code></pre></div></p>
+<p>Step2 run <code>multi-job</code> command
+<div class="highlight"><pre><span></span><code>$ autosbatch multi-job --max-jobs-per-node <span class="m">3</span> -P gpu -l gpu02 -l gpu03 ./cmd.sh
+────────────────────────────────── AutoSbatch ──────────────────────────────────
+Submitting to gpu02... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
+Submitting to gpu03... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
+</code></pre></div></p>
+<h4 id="command-clean">Command: clean<a class="headerlink" href="#command-clean" title="Permanent link">&para;</a></h4>
+<p>remove the directory contains scripts and logs
+<div class="highlight"><pre><span></span><code>autosbatch clean
+</code></pre></div></p>
+<h4 id="enable-verbose">enable <code>verbose</code><a class="headerlink" href="#enable-verbose" title="Permanent link">&para;</a></h4>
+<p>add <code>-v</code> or <code>--verbose</code> between <code>autosbatch</code> and <code>command</code></p>
+<p>e.g.:
+<div class="highlight"><pre><span></span><code>$ autosbatch -v multi-job --max-jobs-per-node <span class="m">3</span> -P gpu -l gpu02 -l gpu03 ./cmd.sh
+────────────────────────────────── AutoSbatch ──────────────────────────────────
+<span class="o">[</span><span class="m">22</span>:21:44<span class="o">]</span> INFO     Verbose mode is on.
+           INFO     Found <span class="m">2</span> available nodes.
+           INFO     <span class="m">10</span> <span class="nb">jobs</span> to excute, allocated to <span class="m">6</span> tasks.
+           INFO     Each task will use <span class="m">1</span> cpus.
+           INFO     Used <span class="m">2</span> nodes.
+           INFO     Each node will excute <span class="m">3</span> tasks <span class="k">in</span> parallel.
+           INFO     <span class="o">{</span><span class="s1">&#39;gpu02&#39;</span>: <span class="m">3</span>, <span class="s1">&#39;gpu03&#39;</span>: <span class="m">3</span><span class="o">}</span>
+           INFO     gpu02: <span class="m">3</span> tasks
+           INFO     Task <span class="m">0</span>: containing job <span class="m">0</span>-1
+           INFO     Sumbitted Task: job_000 to gpu02, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254554</span>
+<span class="o">[</span><span class="m">22</span>:21:45<span class="o">]</span> INFO     Task <span class="m">1</span>: containing job <span class="m">2</span>-3
+           INFO     Sumbitted Task: job_001 to gpu02, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254555</span>
+           INFO     Task <span class="m">2</span>: containing job <span class="m">4</span>-5
+<span class="o">[</span><span class="m">22</span>:21:46<span class="o">]</span> INFO     Sumbitted Task: job_002 to gpu02, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254556</span>
+           INFO     gpu03: <span class="m">3</span> tasks
+           INFO     Task <span class="m">3</span>: containing job <span class="m">6</span>-7
+           INFO     Sumbitted Task: job_003 to gpu03, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254557</span>
+<span class="o">[</span><span class="m">22</span>:21:47<span class="o">]</span> INFO     Task <span class="m">4</span>: containing job <span class="m">8</span>-8
+           INFO     Sumbitted Task: job_004 to gpu03, containing <span class="m">1</span> jobs. Slurm ID: <span class="m">254558</span>
+           INFO     Task <span class="m">5</span>: containing job <span class="m">9</span>-9
+           INFO     Sumbitted Task: job_005 to gpu03, containing <span class="m">1</span> jobs. Slurm ID: <span class="m">254559</span>
+Submitting to gpu02... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
+Submitting to gpu03... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
+           INFO     Writing task log to .autosbatch/1219222144/1219222144.log
+</code></pre></div></p>
 
 
 

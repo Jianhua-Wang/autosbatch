@@ -313,6 +313,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.__enter__" class="md-nav__link">
+    __enter__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.__exit__" class="md-nav__link">
+    __exit__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.__init__" class="md-nav__link">
     __init__()
   </a>
@@ -322,6 +336,13 @@
           <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.clean" class="md-nav__link">
     clean()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.close" class="md-nav__link">
+    close()
   </a>
   
 </li>
@@ -505,6 +526,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.__enter__" class="md-nav__link">
+    __enter__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.__exit__" class="md-nav__link">
+    __exit__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.__init__" class="md-nav__link">
     __init__()
   </a>
@@ -514,6 +549,13 @@
           <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.clean" class="md-nav__link">
     clean()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.close" class="md-nav__link">
+    close()
   </a>
   
 </li>
@@ -720,6 +762,66 @@ SlurmPool        </code>
 
 
 
+<h4 id="autosbatch.autosbatch.SlurmPool.__enter__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#autosbatch.autosbatch.SlurmPool.__enter__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Clean up the scripts and log files.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.__exit__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#autosbatch.autosbatch.SlurmPool.__exit__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Clean up the scripts and log files.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h4 id="autosbatch.autosbatch.SlurmPool.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ncpus_per_job</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_jobs_per_node</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span></code>
 
@@ -792,6 +894,33 @@ SlurmPool        </code>
     <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files.&quot;&quot;&quot;</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dir_path</span><span class="p">]</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.close" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.autosbatch.SlurmPool.close" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Clean up the scripts and log files.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
 </code></pre></div>
         </details>
     </div>
@@ -1000,7 +1129,7 @@ SlurmPool        </code>
     <span class="n">partition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">node</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">cpus_per_task</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">cmds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">cmds</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
     <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span>
     <span class="n">logging_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
 <span class="p">):</span>
@@ -1011,6 +1140,9 @@ SlurmPool        </code>
     <span class="n">templateLoader</span> <span class="o">=</span> <span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="si">}</span><span class="s2">/template&quot;</span><span class="p">)</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">templateLoader</span><span class="p">)</span>
     <span class="n">template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">CPU_OpenMP_TEMPLATE</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cmds</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmds</span><span class="p">]</span>
     <span class="n">output_from_parsed_template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
         <span class="n">job_name</span><span class="o">=</span><span class="n">job_name</span><span class="p">,</span>
         <span class="n">partition</span><span class="o">=</span><span class="n">partition</span><span class="p">,</span>
@@ -1151,7 +1283,7 @@ SlurmPool        </code>
 
 
 <h3 id="autosbatch.cli.main" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">main</span><span class="p">(</span><span class="n">version</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67a00</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67a30</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">dev</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67a60</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">main</span><span class="p">(</span><span class="n">version</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bd90</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bdc0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">dev</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bdf0</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 <a href="#autosbatch.cli.main" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -1193,7 +1325,7 @@ SlurmPool        </code>
 
 
 <h3 id="autosbatch.cli.multi_job" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">multi_job</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67790</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ncpus_per_job</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d677c0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">max_jobs_per_node</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d677f0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">node_list</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67820</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67850</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67880</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cmdfile</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d678b0</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">multi_job</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bb20</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ncpus_per_job</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bb50</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">max_jobs_per_node</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bb80</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">node_list</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bbb0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bbe0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bc10</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cmdfile</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bc40</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 <a href="#autosbatch.cli.multi_job" class="headerlink" title="Permanent link">&para;</a></h3>
@@ -1246,7 +1378,7 @@ SlurmPool        </code>
 
 
 <h3 id="autosbatch.cli.single_job" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">single_job</span><span class="p">(</span><span class="n">ncpus</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67670</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">node</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d676a0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d676d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67700</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67730</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">single_job</span><span class="p">(</span><span class="n">ncpus</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2ba00</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">node</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2ba30</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2ba60</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2ba90</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f0dc4e2bac0</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 <a href="#autosbatch.cli.single_job" class="headerlink" title="Permanent link">&para;</a></h3>
