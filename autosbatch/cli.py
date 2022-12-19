@@ -2,11 +2,10 @@
 
 import logging
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 import typer
 from rich.console import Console
-
 
 from autosbatch import SlurmPool, __version__
 from autosbatch.logger import logger
@@ -29,13 +28,18 @@ def single_job(
     job_name: str = typer.Option('job', '--job-name', '-j', help='Name of the job.'),
     cmd: List[str] = typer.Argument(..., help='Command to run.'),
 ):
-    """submit a single job to slurm cluster"""
+    """Submit a single job to slurm cluster."""
     cmd = [' '.join(cmd)]
     if node:
-        node_list = [node]
+        node_list: Optional[List] = [node]
     else:
         node_list = None
-    p = SlurmPool(pool_size=1, ncpus_per_job=ncpus, node_list=node_list, partition=partition,)
+    p = SlurmPool(
+        pool_size=1,
+        ncpus_per_job=ncpus,
+        node_list=node_list,
+        partition=partition,
+    )
     p.multi_submit(cmds=cmd, job_name=job_name, logging_level=config['logging_level'])
 
 
@@ -55,7 +59,7 @@ def multi_job(
     job_name: str = typer.Option('job', '--job-name', '-j', help='Name of the job.'),
     cmdfile: Path = typer.Argument(..., help='Path to the command file.'),
 ):
-    """submit multiple jobs to slurm cluster"""
+    """Submit multiple jobs to slurm cluster."""
     with open(cmdfile, 'r') as f:
         cmds = f.readlines()
     cmds = [cmd.strip() for cmd in cmds]
@@ -72,7 +76,7 @@ def multi_job(
 
 @app.command()
 def clean():
-    """remove all scripts and logs."""
+    """Remove all scripts and logs."""
     SlurmPool.clean()
     logger.setLevel(config['logging_level'])
     logger.info('Cleaned all scripts and logs.')
@@ -84,9 +88,7 @@ def main(
     verbose: bool = typer.Option(False, '--verbose', '-v', help='Show verbose info.'),
     dev: bool = typer.Option(False, '--dev', help='Show dev info.'),
 ):
-    """
-    submit jobs to slurm cluster, without writing slurm script files.
-    """
+    """Submit jobs to slurm cluster, without writing slurm script files."""
     console = Console()
     console.rule("[bold blue]AutoSbatch[/bold blue]")
     if version:

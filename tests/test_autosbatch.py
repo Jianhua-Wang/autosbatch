@@ -1,4 +1,4 @@
-"""test autosbatch.py"""
+"""test autosbatch.py."""
 
 from autosbatch.autosbatch import SlurmPool
 import logging
@@ -17,7 +17,11 @@ def test_slurm_pool():
 def test_slurm_pool_init():
     """Test SlurmPool init."""
     p = SlurmPool(
-        pool_size=1, ncpus_per_job=2, max_jobs_per_node=3, node_list=['cpu01', 'cpu02'], partition='cpuPartition',
+        pool_size=1,
+        ncpus_per_job=2,
+        max_jobs_per_node=3,
+        node_list=['cpu01', 'cpu02'],
+        partition='cpuPartition',
     )
     assert p.pool_size == 1
     assert p.ncpus_per_job == 2
@@ -38,7 +42,7 @@ def test_slurm_pool_clean():
     """Test SlurmPool clean."""
     p = SlurmPool()
     p.clean()
-    assert Path(p.dir_path).exists() == False
+    assert not Path(p.dir_path).exists()
 
 
 def test_slurm_pool_get_node_list():

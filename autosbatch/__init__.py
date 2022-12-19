@@ -1,5 +1,5 @@
 """Top-level package for autosbatch."""
-from .autosbatch import *
+from autosbatch.autosbatch import SlurmPool
 
 __author__ = """Jianhua Wang"""
 __email__ = 'jianhua.mert@gmail.com'

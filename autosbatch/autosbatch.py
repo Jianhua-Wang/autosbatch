@@ -7,7 +7,7 @@ import time
 from collections import OrderedDict
 from pathlib import Path
 from subprocess import PIPE, run
-from typing import Any, Callable, Dict, Iterable, List, Optional
+from typing import Callable, Dict, Iterable, List, Optional
 
 from jinja2 import Environment, FileSystemLoader
 from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, TimeRemainingColumn
@@ -36,6 +36,7 @@ class SlurmPool:
         partition: Optional[str] = None,
         max_pool_size: int = 1000,
     ):
+        """Initialize a SlurmPool object."""
         self.ncpus_per_job = ncpus_per_job
 
         self.nodes = self.get_nodes()
@@ -53,7 +54,7 @@ class SlurmPool:
         self._set_pool_size(pool_size=pool_size, max_pool_size=max_pool_size)
 
     @classmethod
-    def get_nodes(cls, sortByload=True) -> OrderedDict:
+    def get_nodes(cls, sortByload=True) -> Dict:
         """Get nodes information from sinfo."""
         command = ['sinfo', '-o', '"%n %e %m %a %c %C %O %R %t"']
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
@@ -76,8 +77,8 @@ class SlurmPool:
                 'state': state,
             }
         if sortByload:
-            nodes = OrderedDict(
-                sorted(nodes.items(), key=lambda x: (x[1]['load'], x[1]['used_mem'], x[1]['used_cpus']))
+            nodes = dict(
+                OrderedDict(sorted(nodes.items(), key=lambda x: (x[1]['load'], x[1]['used_mem'], x[1]['used_cpus'])))
             )
         return nodes
 
@@ -95,7 +96,7 @@ class SlurmPool:
         states: List[str] = ['idle', 'mix'],
         node_list: Optional[List[str]] = None,
         partition: Optional[str] = None,
-    ) -> Dict[str, Dict[str, Any]]:
+    ) -> None:
         """Get available nodes."""
         if node_list:
             self.nodes = {k: self.nodes[k] for k in node_list if k in self.nodes}
@@ -105,7 +106,8 @@ class SlurmPool:
         self.nodes = {k: v for k, v in self.nodes.items() if v['free_cpus'] >= self.ncpus_per_job}
 
     def _set_max_jobs_per_node(
-        self, max_jobs_per_node: Optional[int] = None,
+        self,
+        max_jobs_per_node: Optional[int] = None,
     ):
         """Set max_jobs_per_node."""
         if self.ncpus_per_job & 0x1:
@@ -128,7 +130,9 @@ class SlurmPool:
             self.max_jobs_per_node = avail_max_jobs_per_node
 
     def _set_pool_size(
-        self, pool_size: Optional[int] = None, max_pool_size: Optional[int] = None,
+        self,
+        max_pool_size: int,
+        pool_size: Optional[int] = None,
     ):
         """Set pool_size."""
         max_pool_size = min(sum(self.jobs_on_nodes.values()), max_pool_size)
@@ -150,6 +154,7 @@ class SlurmPool:
         job_name: str = 'job',
         logging_level: int = logging.WARNING,
     ):
+        """Submit a single job."""
         logger.setLevel(logging_level)
         Path(cls.SCRIPTS_DIR).mkdir(parents=True, exist_ok=True)
         Path(cls.LOG_DIR).mkdir(parents=True, exist_ok=True)
@@ -183,6 +188,7 @@ class SlurmPool:
         shuffle: bool = False,
         sleep_time: float = 0.5,
     ):
+        """Submit jobs to multiple nodes."""
         if shuffle:
             import random
 
@@ -244,25 +250,17 @@ class SlurmPool:
             json.dump(task_log, f, indent=4)
 
     def starmap(self, func: Callable, params: Iterable[Iterable]):
-        """
-        func: function
-        params: list of tuple
-        return: None
-        """
+        """Submit a list of commands to the cluster."""
         cmds = [func(*i) for i in params]
         self.multi_submit(cmds, func.__name__)
 
     def map(self, func: Callable, params: Iterable):
-        """
-        func: function
-        params: list
-        return: None
-        """
+        """Submit a list of commands to the cluster."""
         cmds = [func(i) for i in params]
         self.multi_submit(cmds, func.__name__)
 
     @classmethod
     def clean(cls):
-        """Clean up the scripts and log files"""
+        """Clean up the scripts and log files."""
         command = ['rm', '-rf', cls.dir_path]
         _ = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
