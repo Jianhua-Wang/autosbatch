@@ -313,6 +313,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.clean" class="md-nav__link">
     clean()
   </a>
@@ -329,6 +336,20 @@
           <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.map" class="md-nav__link">
     map()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.multi_submit" class="md-nav__link">
+    multi_submit()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.single_submit" class="md-nav__link">
+    single_submit()
   </a>
   
 </li>
@@ -354,6 +375,40 @@
   <a href="#autosbatch.cli" class="md-nav__link">
     cli
   </a>
+  
+    <nav class="md-nav" aria-label="cli">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.clean" class="md-nav__link">
+    clean()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.multi_job" class="md-nav__link">
+    multi_job()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.single_job" class="md-nav__link">
+    single_job()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -450,6 +505,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.clean" class="md-nav__link">
     clean()
   </a>
@@ -466,6 +528,20 @@
           <li class="md-nav__item">
   <a href="#autosbatch.autosbatch.SlurmPool.map" class="md-nav__link">
     map()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.multi_submit" class="md-nav__link">
+    multi_submit()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.autosbatch.SlurmPool.single_submit" class="md-nav__link">
+    single_submit()
   </a>
   
 </li>
@@ -491,6 +567,40 @@
   <a href="#autosbatch.cli" class="md-nav__link">
     cli
   </a>
+  
+    <nav class="md-nav" aria-label="cli">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.clean" class="md-nav__link">
+    clean()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.main" class="md-nav__link">
+    main()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.multi_job" class="md-nav__link">
+    multi_job()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autosbatch.cli.single_job" class="md-nav__link">
+    single_job()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -610,6 +720,58 @@ SlurmPool        </code>
 
 
 
+<h4 id="autosbatch.autosbatch.SlurmPool.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ncpus_per_job</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_jobs_per_node</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">node_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+<a href="#autosbatch.autosbatch.SlurmPool.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize a SlurmPool object.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">pool_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">ncpus_per_job</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_jobs_per_node</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">node_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">partition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_pool_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialize a SlurmPool object.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ncpus_per_job</span> <span class="o">=</span> <span class="n">ncpus_per_job</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_nodes</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_avail_nodes</span><span class="p">(</span><span class="n">node_list</span><span class="o">=</span><span class="n">node_list</span><span class="p">,</span> <span class="n">partition</span><span class="o">=</span><span class="n">partition</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">node_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">node_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;No Nodes are qualtified.&#39;</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_set_max_jobs_per_node</span><span class="p">(</span><span class="n">max_jobs_per_node</span><span class="o">=</span><span class="n">max_jobs_per_node</span><span class="p">)</span>
+
+    <span class="n">jobs_on_nodes</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;max_jobs&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">jobs_on_nodes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_jobs_per_node</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_jobs_per_node</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">jobs_on_nodes</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_set_pool_size</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="n">pool_size</span><span class="p">,</span> <span class="n">max_pool_size</span><span class="o">=</span><span class="n">max_pool_size</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h4 id="autosbatch.autosbatch.SlurmPool.clean" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">clean</span><span class="p">()</span></code>
 
@@ -621,14 +783,14 @@ SlurmPool        </code>
 
     <div class="doc doc-contents ">
 
-      <p>Clean up the scripts and log files</p>
+      <p>Clean up the scripts and log files.</p>
 
         <details class="quote">
           <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files&quot;&quot;&quot;</span>
-    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">FILE_DIR</span><span class="p">]</span>
+    <span class="sd">&quot;&quot;&quot;Clean up the scripts and log files.&quot;&quot;&quot;</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rm&#39;</span><span class="p">,</span> <span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">dir_path</span><span class="p">]</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
         </details>
@@ -658,7 +820,7 @@ SlurmPool        </code>
         <details class="quote">
           <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">get_nodes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sortByload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OrderedDict</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">get_nodes</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sortByload</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Get nodes information from sinfo.&quot;&quot;&quot;</span>
     <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sinfo&#39;</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;%n </span><span class="si">%e</span><span class="s1"> %m </span><span class="si">%a</span><span class="s1"> </span><span class="si">%c</span><span class="s1"> %C %O %R %t&quot;&#39;</span><span class="p">]</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -681,8 +843,8 @@ SlurmPool        </code>
             <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="k">if</span> <span class="n">sortByload</span><span class="p">:</span>
-        <span class="n">nodes</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
-            <span class="nb">sorted</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;load&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;used_mem&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;used_cpus&#39;</span><span class="p">]))</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">OrderedDict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">nodes</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;load&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;used_mem&#39;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;used_cpus&#39;</span><span class="p">])))</span>
         <span class="p">)</span>
     <span class="k">return</span> <span class="n">nodes</span>
 </code></pre></div>
@@ -705,16 +867,12 @@ SlurmPool        </code>
 
     <div class="doc doc-contents ">
 
-      
+      <p>Submit a list of commands to the cluster.</p>
 
         <details class="quote">
           <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    func: function</span>
-<span class="sd">    params: list</span>
-<span class="sd">    return: None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Submit a list of commands to the cluster.&quot;&quot;&quot;</span>
     <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">multi_submit</span><span class="p">(</span><span class="n">cmds</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 </code></pre></div>
@@ -724,6 +882,158 @@ SlurmPool        </code>
   </div>
 
 
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.multi_submit" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">multi_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmds</span><span class="p">,</span> <span class="n">job_name</span><span class="p">,</span> <span class="n">logging_level</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sleep_time</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.autosbatch.SlurmPool.multi_submit" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Submit jobs to multiple nodes.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">multi_submit</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">cmds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">logging_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">sleep_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Submit jobs to multiple nodes.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">shuffle</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">random</span>
+
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">cmds</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging_level</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span><span class="si">}</span><span class="s1"> available nodes.&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmds</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cmds</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> jobs to excute, allocated to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="si">}</span><span class="s1"> tasks.&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Each task will use </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ncpus_per_job</span><span class="si">}</span><span class="s1"> cpus.&#39;</span><span class="p">)</span>
+
+    <span class="n">used_nodes</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">registed_jobs</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">jobs_on_nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">used_nodes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+        <span class="n">registed_jobs</span> <span class="o">+=</span> <span class="n">v</span>
+        <span class="k">if</span> <span class="n">registed_jobs</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">elif</span> <span class="n">registed_jobs</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">used_nodes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-=</span> <span class="n">registed_jobs</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span>
+            <span class="k">break</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Used </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">used_nodes</span><span class="p">)</span><span class="si">}</span><span class="s1"> nodes.&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Each node will excute </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">used_nodes</span><span class="o">.</span><span class="n">values</span><span class="p">())</span><span class="si">}</span><span class="s1"> tasks in parallel.&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">used_nodes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">k</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cmds</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">)</span>
+    <span class="n">ith</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">task_log</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">with</span> <span class="n">Progress</span><span class="p">(</span>
+        <span class="n">TextColumn</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{task.description}</span><span class="s2">&quot;</span><span class="p">),</span> <span class="n">BarColumn</span><span class="p">(),</span> <span class="n">MofNCompleteColumn</span><span class="p">(),</span> <span class="n">TimeRemainingColumn</span><span class="p">()</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">progress</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="ow">in</span> <span class="n">used_nodes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">n_jobs</span><span class="si">}</span><span class="s1"> tasks&#39;</span><span class="p">)</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">progress</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Submitting to </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">,</span> <span class="n">total</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_jobs</span><span class="p">):</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep_time</span><span class="p">)</span>
+                <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">ith</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">ith</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="p">(</span><span class="n">ith</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">ith</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Task </span><span class="si">{</span><span class="n">ith</span><span class="si">}</span><span class="s1">: containing job </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">end</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">task_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">job_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">ith</span><span class="si">:</span><span class="s1">&gt;03</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">single_submit</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;partition&#39;</span><span class="p">],</span>
+                    <span class="n">node</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ncpus_per_job</span><span class="p">,</span>
+                    <span class="n">cmds</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span>
+                    <span class="n">task_name</span><span class="p">,</span>
+                    <span class="n">logging_level</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">progress</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">advance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">ith</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">task_log</span><span class="p">[</span><span class="n">task_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;node&#39;</span><span class="p">:</span> <span class="n">node</span><span class="p">,</span>
+                    <span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s1">.sh&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;stdout&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s1">.out.log&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;stderr&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">task_name</span><span class="si">}</span><span class="s1">.err.log&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;cmd&#39;</span><span class="p">:</span> <span class="n">cmds</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">],</span>
+                <span class="p">}</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">FILE_DIR</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">time_now</span><span class="si">}</span><span class="s1">.log&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Writing task log to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">FILE_DIR</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">time_now</span><span class="si">}</span><span class="s1">.log&#39;</span><span class="p">)</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">task_log</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h4 id="autosbatch.autosbatch.SlurmPool.single_submit" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">single_submit</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">cpus_per_task</span><span class="p">,</span> <span class="n">cmds</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="n">logging_level</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#autosbatch.autosbatch.SlurmPool.single_submit" class="headerlink" title="Permanent link">&para;</a></h4>
+
+    <div class="doc doc-contents ">
+
+      <p>Submit a single job.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">single_submit</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">partition</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">node</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">cpus_per_task</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">cmds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span>
+    <span class="n">logging_level</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Submit a single job.&quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging_level</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">SCRIPTS_DIR</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">Path</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">LOG_DIR</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">templateLoader</span> <span class="o">=</span> <span class="n">FileSystemLoader</span><span class="p">(</span><span class="n">searchpath</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="si">}</span><span class="s2">/template&quot;</span><span class="p">)</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">loader</span><span class="o">=</span><span class="n">templateLoader</span><span class="p">)</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">get_template</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">CPU_OpenMP_TEMPLATE</span><span class="p">)</span>
+    <span class="n">output_from_parsed_template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">render</span><span class="p">(</span>
+        <span class="n">job_name</span><span class="o">=</span><span class="n">job_name</span><span class="p">,</span>
+        <span class="n">partition</span><span class="o">=</span><span class="n">partition</span><span class="p">,</span>
+        <span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span>
+        <span class="n">cpus_per_task</span><span class="o">=</span><span class="n">cpus_per_task</span><span class="p">,</span>
+        <span class="n">cmds</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmds</span><span class="p">),</span>
+        <span class="n">log_dir</span><span class="o">=</span><span class="bp">cls</span><span class="o">.</span><span class="n">LOG_DIR</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">script_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="n">SCRIPTS_DIR</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">job_name</span><span class="si">}</span><span class="s1">.sh&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output_from_parsed_template</span><span class="p">)</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;chmod&#39;</span><span class="p">,</span> <span class="s1">&#39;755&#39;</span><span class="p">,</span> <span class="n">script_path</span><span class="p">]</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">command</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sbatch&#39;</span><span class="p">,</span> <span class="n">script_path</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">slurm_id</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Sumbitted Task: </span><span class="si">{</span><span class="n">job_name</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">node</span><span class="si">}</span><span class="s1">, containing </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cmds</span><span class="p">)</span><span class="si">}</span><span class="s1"> jobs. Slurm ID: </span><span class="si">{</span><span class="n">slurm_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Commands: </span><span class="si">{</span><span class="n">cmds</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
 
 
 
@@ -739,16 +1049,12 @@ SlurmPool        </code>
 
     <div class="doc doc-contents ">
 
-      
+      <p>Submit a list of commands to the cluster.</p>
 
         <details class="quote">
           <summary>Source code in <code>autosbatch/autosbatch.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">starmap</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Iterable</span><span class="p">]):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    func: function</span>
-<span class="sd">    params: list of tuple</span>
-<span class="sd">    return: None</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Submit a list of commands to the cluster.&quot;&quot;&quot;</span>
     <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">params</span><span class="p">]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">multi_submit</span><span class="p">(</span><span class="n">cmds</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
 </code></pre></div>
@@ -796,6 +1102,194 @@ SlurmPool        </code>
 
       <p>Console script for autosbatch.</p>
 
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="autosbatch.cli.clean" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">clean</span><span class="p">()</span></code>
+
+
+<a href="#autosbatch.cli.clean" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Remove all scripts and logs.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/cli.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">clean</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Remove all scripts and logs.&quot;&quot;&quot;</span>
+    <span class="n">SlurmPool</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;logging_level&#39;</span><span class="p">])</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Cleaned all scripts and logs.&#39;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="autosbatch.cli.main" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">main</span><span class="p">(</span><span class="n">version</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67a00</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67a30</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">dev</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67a60</span><span class="o">&gt;</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.cli.main" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Submit jobs to slurm cluster, without writing slurm script files.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/cli.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="n">invoke_without_command</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">no_args_is_help</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="s1">&#39;-V&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Show version.&#39;</span><span class="p">),</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;--verbose&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Show verbose info.&#39;</span><span class="p">),</span>
+    <span class="n">dev</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;--dev&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Show dev info.&#39;</span><span class="p">),</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Submit jobs to slurm cluster, without writing slurm script files.&quot;&quot;&quot;</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;[bold blue]AutoSbatch[/bold blue]&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">version</span><span class="p">:</span>
+        <span class="n">typer</span><span class="o">.</span><span class="n">echo</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;AutoSbatch version: </span><span class="si">{</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">typer</span><span class="o">.</span><span class="n">Exit</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;logging_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Verbose mode is on.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dev</span><span class="p">:</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;logging_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Dev mode is on.&#39;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="autosbatch.cli.multi_job" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">multi_job</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67790</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">ncpus_per_job</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d677c0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">max_jobs_per_node</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d677f0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">node_list</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67820</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67850</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67880</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cmdfile</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d678b0</span><span class="o">&gt;</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.cli.multi_job" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Submit multiple jobs to slurm cluster.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/cli.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">multi_job</span><span class="p">(</span>
+    <span class="n">pool_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;--pool-size&#39;</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Number of jobs to submit at the same time.&#39;</span>
+    <span class="p">),</span>
+    <span class="n">ncpus_per_job</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;--ncpus-per-job&#39;</span><span class="p">,</span> <span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Number of cpus per job.&#39;</span><span class="p">),</span>
+    <span class="n">max_jobs_per_node</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;--max-jobs-per-node&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Maximum number of jobs to submit to a single node.&#39;</span>
+    <span class="p">),</span>
+    <span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span>
+        <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;--node-list&#39;</span><span class="p">,</span> <span class="s1">&#39;-l&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;List of nodes to submit jobs to. e.g. &quot;-l node1 -l node2 -l node3&quot;&#39;</span>
+    <span class="p">),</span>
+    <span class="n">partition</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;--partition&#39;</span><span class="p">,</span> <span class="s1">&#39;-P&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Partition to submit jobs to.&#39;</span><span class="p">),</span>
+    <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="s1">&#39;--job-name&#39;</span><span class="p">,</span> <span class="s1">&#39;-j&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Name of the job.&#39;</span><span class="p">),</span>
+    <span class="n">cmdfile</span><span class="p">:</span> <span class="n">Path</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Path to the command file.&#39;</span><span class="p">),</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Submit multiple jobs to slurm cluster.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cmdfile</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">cmds</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="n">cmd</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">cmds</span><span class="p">]</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="n">SlurmPool</span><span class="p">(</span>
+        <span class="n">pool_size</span><span class="o">=</span><span class="n">pool_size</span><span class="p">,</span>
+        <span class="n">ncpus_per_job</span><span class="o">=</span><span class="n">ncpus_per_job</span><span class="p">,</span>
+        <span class="n">max_jobs_per_node</span><span class="o">=</span><span class="n">max_jobs_per_node</span><span class="p">,</span>
+        <span class="n">node_list</span><span class="o">=</span><span class="n">node_list</span><span class="p">,</span>
+        <span class="n">partition</span><span class="o">=</span><span class="n">partition</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">multi_submit</span><span class="p">(</span><span class="n">cmds</span><span class="o">=</span><span class="n">cmds</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="n">job_name</span><span class="p">,</span> <span class="n">logging_level</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;logging_level&#39;</span><span class="p">])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h3 id="autosbatch.cli.single_job" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">single_job</span><span class="p">(</span><span class="n">ncpus</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67670</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">node</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d676a0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">partition</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d676d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">OptionInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67700</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">cmd</span><span class="o">=&lt;</span><span class="n">typer</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ArgumentInfo</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7ff760d67730</span><span class="o">&gt;</span><span class="p">)</span></code>
+
+
+<a href="#autosbatch.cli.single_job" class="headerlink" title="Permanent link">&para;</a></h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Submit a single job to slurm cluster.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>autosbatch/cli.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">single_job</span><span class="p">(</span>
+    <span class="n">ncpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;--ncpus&#39;</span><span class="p">,</span> <span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Number of cpus.&#39;</span><span class="p">),</span>
+    <span class="n">node</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;--node&#39;</span><span class="p">,</span> <span class="s1">&#39;-N&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Node to submit job to.&#39;</span><span class="p">),</span>
+    <span class="n">partition</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;--partition&#39;</span><span class="p">,</span> <span class="s1">&#39;-P&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Partition to submit jobs to.&#39;</span><span class="p">),</span>
+    <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Option</span><span class="p">(</span><span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="s1">&#39;--job-name&#39;</span><span class="p">,</span> <span class="s1">&#39;-j&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Name of the job.&#39;</span><span class="p">),</span>
+    <span class="n">cmd</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Command to run.&#39;</span><span class="p">),</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Submit a single job to slurm cluster.&quot;&quot;&quot;</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cmd</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">node</span><span class="p">:</span>
+        <span class="n">node_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_list</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">SlurmPool</span><span class="p">(</span>
+        <span class="n">pool_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ncpus_per_job</span><span class="o">=</span><span class="n">ncpus</span><span class="p">,</span>
+        <span class="n">node_list</span><span class="o">=</span><span class="n">node_list</span><span class="p">,</span>
+        <span class="n">partition</span><span class="o">=</span><span class="n">partition</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">multi_submit</span><span class="p">(</span><span class="n">cmds</span><span class="o">=</span><span class="n">cmd</span><span class="p">,</span> <span class="n">job_name</span><span class="o">=</span><span class="n">job_name</span><span class="p">,</span> <span class="n">logging_level</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;logging_level&#39;</span><span class="p">])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
 
     </div>
 
