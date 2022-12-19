@@ -86,3 +86,15 @@ Here we would have the update steps for 1.2.4 for people to follow.
 
 ### Fixed
 
+## [0.1.6] - 2022-12-19
+
+### Added
+
+- support context manager
+- add docs
+
+### Changed
+
+
+### Fixed
+

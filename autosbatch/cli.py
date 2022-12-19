@@ -10,7 +10,6 @@ from rich.console import Console
 from autosbatch import SlurmPool, __version__
 from autosbatch.logger import logger
 
-# TODO: add docs
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 app = typer.Typer(context_settings=CONTEXT_SETTINGS, add_completion=False)

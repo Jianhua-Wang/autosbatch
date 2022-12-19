@@ -7,7 +7,7 @@ import time
 from collections import OrderedDict
 from pathlib import Path
 from subprocess import PIPE, run
-from typing import Callable, Dict, Iterable, List, Optional
+from typing import Callable, Dict, Iterable, List, Optional, Union
 
 from jinja2 import Environment, FileSystemLoader
 from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, TimeRemainingColumn
@@ -18,7 +18,6 @@ from autosbatch.logger import logger
 class SlurmPool:
     """A class for submitting jobs to Slurm."""
 
-    # TODO: support context manager
     time_now = datetime.datetime.now().strftime('%m%d%H%M%S')
     dir_path = '.autosbatch'
     FILE_DIR = f'{dir_path}/{time_now}'
@@ -106,8 +105,7 @@ class SlurmPool:
         self.nodes = {k: v for k, v in self.nodes.items() if v['free_cpus'] >= self.ncpus_per_job}
 
     def _set_max_jobs_per_node(
-        self,
-        max_jobs_per_node: Optional[int] = None,
+        self, max_jobs_per_node: Optional[int] = None,
     ):
         """Set max_jobs_per_node."""
         if self.ncpus_per_job & 0x1:
@@ -130,9 +128,7 @@ class SlurmPool:
             self.max_jobs_per_node = avail_max_jobs_per_node
 
     def _set_pool_size(
-        self,
-        max_pool_size: int,
-        pool_size: Optional[int] = None,
+        self, max_pool_size: int, pool_size: Optional[int] = None,
     ):
         """Set pool_size."""
         max_pool_size = min(sum(self.jobs_on_nodes.values()), max_pool_size)
@@ -150,7 +146,7 @@ class SlurmPool:
         partition: str,
         node: str,
         cpus_per_task: int,
-        cmds: List[str],
+        cmds: Union[str, List[str]],
         job_name: str = 'job',
         logging_level: int = logging.WARNING,
     ):
@@ -161,6 +157,9 @@ class SlurmPool:
         templateLoader = FileSystemLoader(searchpath=f"{os.path.dirname(os.path.realpath(__file__))}/template")
         env = Environment(loader=templateLoader)
         template = env.get_template(cls.CPU_OpenMP_TEMPLATE)
+
+        if isinstance(cmds, str):
+            cmds = [cmds]
         output_from_parsed_template = template.render(
             job_name=job_name,
             partition=partition,
@@ -264,3 +263,15 @@ class SlurmPool:
         """Clean up the scripts and log files."""
         command = ['rm', '-rf', cls.dir_path]
         _ = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
+
+    def close(self):
+        """Clean up the scripts and log files."""
+        pass
+
+    def __enter__(self):
+        """Clean up the scripts and log files."""
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Clean up the scripts and log files."""
+        self.close()
