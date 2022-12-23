@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.7] - 2022-12-19
+
+### Added
+
+
+### Changed
+
+- disable auto_refresh progress bar
+
+### Fixed
+
+
 
 ## [0.1.0] - 2022-12-16
   
