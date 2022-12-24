@@ -1,1 +1,1 @@
-::: autosbatch
+::: autosbatch.SlurmPool

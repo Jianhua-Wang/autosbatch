@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.8] - 2022-12-19
+
+### Added
+
+- add api docs
+
+### Changed
+
+
+### Fixed
+
 ## [0.1.7] - 2022-12-19
 
 ### Added

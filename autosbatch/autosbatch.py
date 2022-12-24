@@ -35,7 +35,24 @@ class SlurmPool:
         partition: Optional[str] = None,
         max_pool_size: int = 1000,
     ):
-        """Initialize a SlurmPool object."""
+        """
+        Initialize a SlurmPool object.
+
+        Parameters
+        ----------
+        pool_size : int, optional
+            Number of jobs to submit at the same time, by default None
+        ncpus_per_job : int, optional
+            Number of cpus per job, by default 1
+        max_jobs_per_node : int, optional
+            Maximum number of jobs to submit to a single node, by default None
+        node_list : List[str], optional
+            List of nodes to submit jobs to, by default None
+        partition : str, optional
+            Partition to submit jobs to, by default None
+        max_pool_size : int, optional
+            Maximum number of jobs to submit, by default 1000
+        """
         self.ncpus_per_job = ncpus_per_job
 
         self.nodes = self.get_nodes()
@@ -54,7 +71,19 @@ class SlurmPool:
 
     @classmethod
     def get_nodes(cls, sortByload=True) -> Dict:
-        """Get nodes information from sinfo."""
+        """
+        Get nodes information from sinfo.
+
+        Parameters
+        ----------
+        sortByload : bool, optional
+            Sort nodes by load, by default True
+
+        Returns
+        -------
+        Dict
+            Information of nodes, by default
+        """
         command = ['sinfo', '-o', '"%n %e %m %a %c %C %O %R %t"']
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
         nodes = {}
@@ -82,7 +111,19 @@ class SlurmPool:
         return nodes
 
     def _check_hypertreading(self, node_name) -> bool:
-        """Check if hyperthreading is enabled."""
+        """
+        Check if hyperthreading is enabled.
+
+        Parameters
+        ----------
+        node_name : str
+            Name of the node
+
+        Returns
+        -------
+        bool
+            True if hyperthreading is enabled, False otherwise
+        """
         command = ['scontrol', 'show', 'node', node_name]
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
         if 'ThreadsPerCore=2' in result.stdout:
@@ -96,7 +137,22 @@ class SlurmPool:
         node_list: Optional[List[str]] = None,
         partition: Optional[str] = None,
     ) -> None:
-        """Get available nodes."""
+        """
+        Get available nodes.
+
+        Parameters
+        ----------
+        states : List[str], optional
+            List of states of nodes, by default ['idle', 'mix']
+        node_list : List[str], optional
+            List of nodes to submit jobs to, by default None
+        partition : str, optional
+            Partition to submit jobs to, by default None
+
+        Returns
+        -------
+        None
+        """
         if node_list:
             self.nodes = {k: self.nodes[k] for k in node_list if k in self.nodes}
         if partition:
@@ -107,7 +163,18 @@ class SlurmPool:
     def _set_max_jobs_per_node(
         self, max_jobs_per_node: Optional[int] = None,
     ):
-        """Set max_jobs_per_node."""
+        """
+        Set max_jobs_per_node.
+
+        Parameters
+        ----------
+        max_jobs_per_node : int, optional
+            Maximum number of jobs to submit to a single node, by default None
+
+        Returns
+        -------
+        None
+        """
         if self.ncpus_per_job & 0x1:
             for node in self.nodes.keys():
                 if self._check_hypertreading(node):
@@ -130,7 +197,20 @@ class SlurmPool:
     def _set_pool_size(
         self, max_pool_size: int, pool_size: Optional[int] = None,
     ):
-        """Set pool_size."""
+        """
+        Set pool_size.
+
+        Parameters
+        ----------
+        max_pool_size : int
+            Maximum number of jobs to submit
+        pool_size : int, optional
+            Number of jobs to submit, by default None
+
+        Returns
+        -------
+        None
+        """
         max_pool_size = min(sum(self.jobs_on_nodes.values()), max_pool_size)
         if pool_size:
             if pool_size > max_pool_size:
@@ -150,7 +230,28 @@ class SlurmPool:
         job_name: str = 'job',
         logging_level: int = logging.WARNING,
     ):
-        """Submit a single job."""
+        """
+        Submit a single job.
+
+        Parameters
+        ----------
+        partition : str
+            Partition to submit jobs to
+        node : str
+            Node to submit jobs to
+        cpus_per_task : int
+            Number of CPUs to use
+        cmds : str or List[str]
+            Commands to run
+        job_name : str, optional
+            Name of the job, by default 'job'
+        logging_level : int, optional
+            Logging level, by default logging.WARNING
+
+        Returns
+        -------
+        None
+        """
         logger.setLevel(logging_level)
         Path(cls.SCRIPTS_DIR).mkdir(parents=True, exist_ok=True)
         Path(cls.LOG_DIR).mkdir(parents=True, exist_ok=True)
@@ -187,7 +288,26 @@ class SlurmPool:
         shuffle: bool = False,
         sleep_time: float = 0.5,
     ):
-        """Submit jobs to multiple nodes."""
+        """
+        Submit jobs to multiple nodes.
+
+        Parameters
+        ----------
+        cmds : List[str]
+            Commands to run
+        job_name : str
+            Name of the job
+        logging_level : int, optional
+            Logging level, by default logging.WARNING
+        shuffle : bool, optional
+            Shuffle the commands, by default False
+        sleep_time : float, optional
+            Time to sleep between each submission, by default 0.5
+
+        Returns
+        -------
+        None
+        """
         if shuffle:
             import random
 
@@ -254,12 +374,38 @@ class SlurmPool:
             json.dump(task_log, f, indent=4)
 
     def starmap(self, func: Callable, params: Iterable[Iterable]):
-        """Submit a list of commands to the cluster."""
+        """
+        Submit a list of commands to the cluster.
+
+        Parameters
+        ----------
+        func : Callable
+            Function to call
+        params : Iterable[Iterable]
+            Parameters to pass to the function
+
+        Returns
+        -------
+        None
+        """
         cmds = [func(*i) for i in params]
         self.multi_submit(cmds, func.__name__)
 
     def map(self, func: Callable, params: Iterable):
-        """Submit a list of commands to the cluster."""
+        """
+        Submit a list of commands to the cluster.
+
+        Parameters
+        ----------
+        func : Callable
+            Function to call
+        params : Iterable
+            Parameters to pass to the function
+
+        Returns
+        -------
+        None
+        """
         cmds = [func(i) for i in params]
         self.multi_submit(cmds, func.__name__)
 

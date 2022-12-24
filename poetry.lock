@@ -457,6 +457,24 @@ python-dateutil = ">=2.8.1"
 dev = ["flake8", "markdown", "twine", "wheel"]
 
 [[package]]
+name = "griffe"
+version = "0.25.2"
+description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+files = [
+    {file = "griffe-0.25.2-py3-none-any.whl", hash = "sha256:0868da415c5f43fe186705c041d98b69523c24a6504e841031373eacfdd7ec05"},
+    {file = "griffe-0.25.2.tar.gz", hash = "sha256:555707b3417355e015d837845522cb38ee4ffcec485427868648eafacabe142e"},
+]
+
+[package.dependencies]
+colorama = ">=0.4"
+
+[package.extras]
+async = ["aiofiles (>=0.7,<1.0)"]
+
+[[package]]
 name = "identify"
 version = "2.5.10"
 description = "File identification library for Python"
@@ -570,14 +588,14 @@ trio = ["async_generator", "trio"]
 
 [[package]]
 name = "jinja2"
-version = "3.0.3"
+version = "3.1.2"
 description = "A very fast and expressive template engine."
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "Jinja2-3.0.3-py3-none-any.whl", hash = "sha256:077ce6014f7b40d03b47d1f1ca4b0fc8328a692bd284016f806ed0eaca390ad8"},
-    {file = "Jinja2-3.0.3.tar.gz", hash = "sha256:611bb273cd68f3b993fabdc4064fc858c5b47a973cb5aa7999ec1ba405c87cd7"},
+    {file = "Jinja2-3.1.2-py3-none-any.whl", hash = "sha256:6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61"},
+    {file = "Jinja2-3.1.2.tar.gz", hash = "sha256:31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852"},
 ]
 
 [package.dependencies]
@@ -732,35 +750,31 @@ min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-imp
 
 [[package]]
 name = "mkdocs-autorefs"
-version = "0.2.1"
+version = "0.4.1"
 description = "Automatically link across pages in MkDocs."
 category = "main"
 optional = true
-python-versions = ">=3.6,<4.0"
+python-versions = ">=3.7"
 files = [
-    {file = "mkdocs-autorefs-0.2.1.tar.gz", hash = "sha256:b8156d653ed91356e71675ce1fa1186d2b2c2085050012522895c9aa98fca3e5"},
-    {file = "mkdocs_autorefs-0.2.1-py3-none-any.whl", hash = "sha256:f301b983a34259df90b3fcf7edc234b5e6c7065bd578781e66fd90b8cfbe76be"},
+    {file = "mkdocs-autorefs-0.4.1.tar.gz", hash = "sha256:70748a7bd025f9ecd6d6feeba8ba63f8e891a1af55f48e366d6d6e78493aba84"},
+    {file = "mkdocs_autorefs-0.4.1-py3-none-any.whl", hash = "sha256:a2248a9501b29dc0cc8ba4c09f4f47ff121945f6ce33d760f145d6f89d313f5b"},
 ]
 
 [package.dependencies]
-Markdown = ">=3.3,<4.0"
-mkdocs = ">=1.1,<2.0"
+Markdown = ">=3.3"
+mkdocs = ">=1.1"
 
 [[package]]
 name = "mkdocs-include-markdown-plugin"
-version = "1.0.0"
+version = "4.0.3"
 description = "Mkdocs Markdown includer plugin."
 category = "main"
 optional = true
-python-versions = "*"
+python-versions = "<3.12,>=3.7"
 files = [
-    {file = "mkdocs_include_markdown_plugin-1.0.0-py3-none-any.whl", hash = "sha256:5143312d4aa99dfbfb40bab04ea193928f8142ea8d02f64a52e55bf9d6b61b58"},
-    {file = "mkdocs_include_markdown_plugin-1.0.0.tar.gz", hash = "sha256:4c2e53f2d504e3de0d6c9fecf1da63597453a3ebd7f34bb118c84fbf4a8d57ce"},
+    {file = "mkdocs_include_markdown_plugin-4.0.3-py3-none-any.whl", hash = "sha256:bea863f0f4773c2dba4524e629bed222b0ce4135bcd47fc2fc6f524384f21bd8"},
+    {file = "mkdocs_include_markdown_plugin-4.0.3.tar.gz", hash = "sha256:0b98f8877a6e262a91024dae0d40597b04ebe9175f5dfdfa5796a9068e24458a"},
 ]
-
-[package.extras]
-dev = ["bump2version (==1.0.1)", "flake8 (==3.8.4)", "flake8-implicit-str-concat (==0.2.0)", "flake8-print (==4.0.0)", "isort (==5.6.4)", "pre-commit (==2.9.2)", "pytest (==6.1.2)", "pytest-cov (==2.10.1)", "twine (==3.2.0)", "yamllint (==1.25.0)"]
-test = ["pytest (==6.1.2)", "pytest-cov (==2.10.1)"]
 
 [[package]]
 name = "mkdocs-material"
@@ -797,24 +811,45 @@ files = [
 
 [[package]]
 name = "mkdocstrings"
-version = "0.16.2"
+version = "0.19.1"
 description = "Automatic documentation from sources, for MkDocs."
 category = "main"
 optional = true
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "mkdocstrings-0.16.2-py3-none-any.whl", hash = "sha256:671fba8a6c7a8455562aae0a3fa85979fbcef261daec5b2bac4dd1479acc14df"},
-    {file = "mkdocstrings-0.16.2.tar.gz", hash = "sha256:3d8a86c283dfa21818d5b9579aa4e750eea6b5c127b43ad8b00cebbfb7f9634e"},
+    {file = "mkdocstrings-0.19.1-py3-none-any.whl", hash = "sha256:32a38d88f67f65b264184ea71290f9332db750d189dea4200cbbe408d304c261"},
+    {file = "mkdocstrings-0.19.1.tar.gz", hash = "sha256:d1037cacb4b522c1e8c164ed5d00d724a82e49dcee0af80db8fb67b384faeef9"},
 ]
 
 [package.dependencies]
-Jinja2 = ">=2.11.1,<4.0"
-Markdown = ">=3.3,<4.0"
-MarkupSafe = ">=1.1,<3.0"
-mkdocs = ">=1.2,<2.0"
-mkdocs-autorefs = ">=0.1,<0.4"
-pymdown-extensions = ">=6.3,<10.0"
-pytkdocs = ">=0.2.0,<0.13.0"
+Jinja2 = ">=2.11.1"
+Markdown = ">=3.3"
+MarkupSafe = ">=1.1"
+mkdocs = ">=1.2"
+mkdocs-autorefs = ">=0.3.1"
+mkdocstrings-python = {version = ">=0.5.2", optional = true, markers = "extra == \"python\""}
+pymdown-extensions = ">=6.3"
+
+[package.extras]
+crystal = ["mkdocstrings-crystal (>=0.3.4)"]
+python = ["mkdocstrings-python (>=0.5.2)"]
+python-legacy = ["mkdocstrings-python-legacy (>=0.2.1)"]
+
+[[package]]
+name = "mkdocstrings-python"
+version = "0.8.2"
+description = "A Python handler for mkdocstrings."
+category = "main"
+optional = true
+python-versions = ">=3.7"
+files = [
+    {file = "mkdocstrings-python-0.8.2.tar.gz", hash = "sha256:b22528b7a7a0589d007eced019d97ad14de4eba4b2b9ba6a013bb66edc74ab43"},
+    {file = "mkdocstrings_python-0.8.2-py3-none-any.whl", hash = "sha256:213d9592e66e084a9bd2fa4956d6294a3487c6dc9cc45164058d6317249b7b6e"},
+]
+
+[package.dependencies]
+griffe = ">=0.24"
+mkdocstrings = ">=0.19"
 
 [[package]]
 name = "more-itertools"
@@ -1155,21 +1190,6 @@ files = [
 
 [package.dependencies]
 six = ">=1.5"
-
-[[package]]
-name = "pytkdocs"
-version = "0.9.0"
-description = "Load Python objects documentation."
-category = "main"
-optional = true
-python-versions = ">=3.6,<4.0"
-files = [
-    {file = "pytkdocs-0.9.0-py3-none-any.whl", hash = "sha256:12ed87d71b3518301c7b8c12c1a620e4b481a9d2fca1038aea665955000fad7f"},
-    {file = "pytkdocs-0.9.0.tar.gz", hash = "sha256:c8c39acb63824f69c3f6f58b3aed6ae55250c35804b76fd0cba09d5c11be13da"},
-]
-
-[package.extras]
-tests = ["coverage (>=5.2.1,<6.0.0)", "invoke (>=1.4.1,<2.0.0)", "marshmallow (>=3.5.2,<4.0.0)", "mypy (>=0.782,<0.783)", "pydantic (>=1.5.1,<2.0.0)", "pytest (>=6.0.1,<7.0.0)", "pytest-cov (>=2.10.1,<3.0.0)", "pytest-randomly (>=3.4.1,<4.0.0)", "pytest-sugar (>=0.9.4,<0.10.0)", "pytest-xdist (>=2.1.0,<3.0.0)"]
 
 [[package]]
 name = "pywin32-ctypes"
@@ -1639,5 +1659,5 @@ test = ["pytest", "black", "isort", "mypy", "flake8", "flake8-docstrings", "pyte
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.8,<4.0"
-content-hash = "9079e7e8249f2ff78b31af33c9230d878a68d695b03fe425a4698b2c0afe8de7"
+python-versions = ">=3.8,<3.12"
+content-hash = "82248876fb00b7be7a333cb8bf902aac2dba4d392c08b3b9673532228f939791"
