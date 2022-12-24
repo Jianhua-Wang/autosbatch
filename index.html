@@ -221,6 +221,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Home
@@ -237,6 +239,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -245,36 +249,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#autosbatch" class="md-nav__link">
-    autosbatch
-  </a>
-  
-    <nav class="md-nav" aria-label="autosbatch">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     Features
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#todo" class="md-nav__link">
     TODO
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#credits" class="md-nav__link">
     Credits
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -378,6 +369,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -386,36 +379,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#autosbatch" class="md-nav__link">
-    autosbatch
-  </a>
-  
-    <nav class="md-nav" aria-label="autosbatch">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     Features
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#todo" class="md-nav__link">
     TODO
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#credits" class="md-nav__link">
     Credits
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -439,15 +419,14 @@
   </a>
 
 
-  <h1>Home</h1>
-
-<!-- BEGIN INCLUDE ../README.md   -->
-<h2 id="autosbatch">autosbatch<a class="headerlink" href="#autosbatch" title="Permanent link">&para;</a></h2>
+<!-- BEGIN INCLUDE ../README.md -->
+<h1 id="autosbatch">autosbatch<a class="headerlink" href="#autosbatch" title="Permanent link">&para;</a></h1>
 <p><a href="https://pypi.org/project/autosbatch/"><img alt="pypi" src="https://img.shields.io/pypi/v/autosbatch.svg" /></a>
 <a href="https://pypi.org/project/autosbatch/"><img alt="python" src="https://img.shields.io/pypi/pyversions/autosbatch.svg" /></a>
 <a href="https://github.com/Jianhua-Wang/autosbatch/actions/workflows/dev.yml"><img alt="Build Status" src="https://github.com/Jianhua-Wang/autosbatch/actions/workflows/dev.yml/badge.svg" /></a>
 <a href="https://codecov.io/github/Jianhua-Wang/autosbatch"><img alt="codecov" src="https://codecov.io/gh/Jianhua-Wang/autosbatch/branch/main/graphs/badge.svg" /></a>
-<a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a></p>
+<a href="https://opensource.org/licenses/MIT"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></a>
+<a href="https://pypi.org/project/autosbatch/"><img alt="PyPI download month" src="https://img.shields.io/pypi/dm/autosbatch.svg" /></a></p>
 <p>submit hundreds of jobs to slurm automatically</p>
 <ul>
 <li>Documentation: <a href="https://Jianhua-Wang.github.io/autosbatch">https://Jianhua-Wang.github.io/autosbatch</a></li>
@@ -455,19 +434,19 @@
 <li>PyPI: <a href="https://pypi.org/project/autosbatch/">https://pypi.org/project/autosbatch/</a></li>
 <li>Free software: MIT</li>
 </ul>
-<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <p>Sometimes, it's quite inconvenient when we submit hundreds of jobs to slurm. For example, one needs to align RNA-seq data from one hundred samples. He may start with a bash script that takes the fastq of one sample and write sbatch scripts which execute <code>bash align.sh sample.fq</code> multiple times. If he wants to run 50 samples at the same time, he should write 50 sbatch scripts and each script contains two align commands. Manually managing these sbatch scripts is inconvenient. autosbatch is very helpful for submitting slurm jobs automatically and it's just like the <code>multiprocessing.Pool</code>.</p>
 <ul>
 <li>Automatically submit hundreds of jobs to Slurm with a few code.</li>
 <li>The same usage as <code>multiprocessing.Pool</code>.</li>
 <li>Provide command line tool for people who are not familiar with Python.</li>
 </ul>
-<h3 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h3>
+<h2 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Support gpu allocation</li>
 <li>Support MPI jobs</li>
 </ul>
-<h3 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">&para;</a></h3>
+<h2 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">&para;</a></h2>
 <p>This package was created with <a href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> and the <a href="https://github.com/waynerv/cookiecutter-pypackage">waynerv/cookiecutter-pypackage</a> project template.</p>
 <!-- END INCLUDE -->
 

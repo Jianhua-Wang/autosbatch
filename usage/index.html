@@ -251,6 +251,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Usage
@@ -267,6 +269,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -275,14 +279,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#usage-for-package" class="md-nav__link">
     Usage for package
   </a>
@@ -315,8 +311,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#usage-for-cli-tool" class="md-nav__link">
     Usage for CLI tool
   </a>
@@ -356,11 +352,6 @@
   <a href="#enable-verbose" class="md-nav__link">
     enable verbose
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -439,6 +430,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -447,14 +440,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    Usage
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#usage-for-package" class="md-nav__link">
     Usage for package
   </a>
@@ -487,8 +472,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#usage-for-cli-tool" class="md-nav__link">
     Usage for CLI tool
   </a>
@@ -535,11 +520,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
@@ -561,16 +541,14 @@
   </a>
 
 
-  <h1>Usage</h1>
-
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="usage-for-package">Usage for package<a class="headerlink" href="#usage-for-package" title="Permanent link">&para;</a></h3>
-<h4 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h4>
+<h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h1>
+<h2 id="usage-for-package">Usage for package<a class="headerlink" href="#usage-for-package" title="Permanent link">&para;</a></h2>
+<h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">autosbatch</span>
 <span class="c1"># or import SlurmPool directly</span>
 <span class="kn">from</span> <span class="nn">autosbatch</span> <span class="kn">import</span> <span class="n">SlurmPool</span>
 </code></pre></div>
-<h4 id="submit-single-job">submit single job<a class="headerlink" href="#submit-single-job" title="Permanent link">&para;</a></h4>
+<h3 id="submit-single-job">submit single job<a class="headerlink" href="#submit-single-job" title="Permanent link">&para;</a></h3>
 <p>run <code>sleep 10</code> on node <code>cpu01</code> on <code>cpuPartition</code> paritition.
 <div class="highlight"><pre><span></span><code><span class="n">SlurmPool</span><span class="o">.</span><span class="n">single_submit</span><span class="p">(</span><span class="n">partition</span><span class="o">=</span><span class="s1">&#39;cpuPartition&#39;</span><span class="p">,</span>
                         <span class="n">node</span><span class="o">=</span><span class="s1">&#39;cpu01&#39;</span><span class="p">,</span>
@@ -587,7 +565,7 @@
                         <span class="n">job_name</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
                         <span class="n">job_id</span><span class="o">=</span><span class="s1">&#39;001&#39;</span><span class="p">)</span>
 </code></pre></div></p>
-<h4 id="submit-multiple-job">submit multiple job<a class="headerlink" href="#submit-multiple-job" title="Permanent link">&para;</a></h4>
+<h3 id="submit-multiple-job">submit multiple job<a class="headerlink" href="#submit-multiple-job" title="Permanent link">&para;</a></h3>
 <p>TODO: compare multiprocessing.Pool.map
 TODO: add with syntax</p>
 <p>Just like <code>multiprocessing.Pool.map</code>
@@ -630,8 +608,8 @@ TODO: add with syntax</p>
                 <span class="n">node_list</span><span class="o">=</span><span class="kc">None</span> <span class="c1"># use all nodes if not specify</span>
                 <span class="p">)</span>
 </code></pre></div></p>
-<h3 id="usage-for-cli-tool">Usage for CLI tool<a class="headerlink" href="#usage-for-cli-tool" title="Permanent link">&para;</a></h3>
-<h4 id="help-message">help message<a class="headerlink" href="#help-message" title="Permanent link">&para;</a></h4>
+<h2 id="usage-for-cli-tool">Usage for CLI tool<a class="headerlink" href="#usage-for-cli-tool" title="Permanent link">&para;</a></h2>
+<h3 id="help-message">help message<a class="headerlink" href="#help-message" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$ autosbatch --help
 
  Usage: autosbatch <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
@@ -650,7 +628,7 @@ TODO: add with syntax</p>
 │ single-job         Submit a single job to slurm cluster.                        │
 ╰─────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
-<h4 id="command-single-job">Command: single-job<a class="headerlink" href="#command-single-job" title="Permanent link">&para;</a></h4>
+<h3 id="command-single-job">Command: single-job<a class="headerlink" href="#command-single-job" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$ autosbatch single-job -h
 ─────────────────────────────────── AutoSbatch ────────────────────────────────────
 
@@ -674,7 +652,7 @@ TODO: add with syntax</p>
 ─────────────────────────────────── AutoSbatch ────────────────────────────────────
 <span class="o">[</span><span class="m">22</span>:13:46<span class="o">]</span> WARNING  Hyperthreading is enabled on cpu14, ncpus_per_job is <span class="nb">set</span> to <span class="m">2</span>.
 </code></pre></div></p>
-<h4 id="command-multi-job">Command: multi-job<a class="headerlink" href="#command-multi-job" title="Permanent link">&para;</a></h4>
+<h3 id="command-multi-job">Command: multi-job<a class="headerlink" href="#command-multi-job" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$ autosbatch multi-job -h
 ─────────────────────────────────── AutoSbatch ────────────────────────────────────
 
@@ -728,11 +706,11 @@ sleep <span class="m">9</span>
 Submitting to gpu02... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
 Submitting to gpu03... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
 </code></pre></div></p>
-<h4 id="command-clean">Command: clean<a class="headerlink" href="#command-clean" title="Permanent link">&para;</a></h4>
+<h3 id="command-clean">Command: clean<a class="headerlink" href="#command-clean" title="Permanent link">&para;</a></h3>
 <p>remove the directory contains scripts and logs
 <div class="highlight"><pre><span></span><code>autosbatch clean
 </code></pre></div></p>
-<h4 id="enable-verbose">enable <code>verbose</code><a class="headerlink" href="#enable-verbose" title="Permanent link">&para;</a></h4>
+<h3 id="enable-verbose">enable <code>verbose</code><a class="headerlink" href="#enable-verbose" title="Permanent link">&para;</a></h3>
 <p>add <code>-v</code> or <code>--verbose</code> between <code>autosbatch</code> and <code>command</code></p>
 <p>e.g.:
 <div class="highlight"><pre><span></span><code>$ autosbatch -v multi-job --max-jobs-per-node <span class="m">3</span> -P gpu -l gpu02 -l gpu03 ./cmd.sh
