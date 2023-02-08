@@ -13,7 +13,7 @@ from autosbatch import SlurmPool
 ### submit single job
 run `sleep 10` on node `cpu01` on `cpuPartition` paritition.
 ```Python
-SlurmPool.single_submit(partition='cpuPartition',
+SlurmPool().single_submit(partition='cpuPartition',
                         node='cpu01',
                         cpus_per_task=1,
                         cmds='sleep 10',
@@ -24,7 +24,7 @@ SlurmPool.single_submit(partition='cpuPartition',
 
 or run a job containing two steps, e.g. `echo hello` and `sleep 10`
 ```Python
-SlurmPool.single_submit(partition='cpuPartition',
+SlurmPool().single_submit(partition='cpuPartition',
                         node='cpu01',
                         cpus_per_task=1,
                         cmds=['echo hello','sleep 10'],

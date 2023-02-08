@@ -18,11 +18,7 @@ from autosbatch.logger import logger
 class SlurmPool:
     """A class for submitting jobs to Slurm."""
 
-    time_now = datetime.datetime.now().strftime('%m%d%H%M%S')
     dir_path = '.autosbatch'
-    FILE_DIR = f'{dir_path}/{time_now}'
-    LOG_DIR = f'{FILE_DIR}/log'
-    SCRIPTS_DIR = f'{FILE_DIR}/scripts'
 
     CPU_OpenMP_TEMPLATE = 'CPU_OpenMP.j2'
 
@@ -68,6 +64,10 @@ class SlurmPool:
             k: v if v <= self.max_jobs_per_node else self.max_jobs_per_node for k, v in jobs_on_nodes.items()
         }
         self._set_pool_size(pool_size=pool_size, max_pool_size=max_pool_size)
+        self.time_now = datetime.datetime.now().strftime('%m%d%H%M%S')
+        self.file_dir = f'{self.dir_path}/{self.time_now}'
+        self.log_dir = f'{self.file_dir}/log'
+        self.scripts_dir = f'{self.file_dir}/scripts'
 
     @classmethod
     def get_nodes(cls, sortByload=True) -> Dict:
@@ -220,9 +220,8 @@ class SlurmPool:
         else:
             self.pool_size = max_pool_size
 
-    @classmethod
     def single_submit(
-        cls,
+        self,
         partition: str,
         node: str,
         cpus_per_task: int,
@@ -253,11 +252,11 @@ class SlurmPool:
         None
         """
         logger.setLevel(logging_level)
-        Path(cls.SCRIPTS_DIR).mkdir(parents=True, exist_ok=True)
-        Path(cls.LOG_DIR).mkdir(parents=True, exist_ok=True)
+        Path(self.scripts_dir).mkdir(parents=True, exist_ok=True)
+        Path(self.log_dir).mkdir(parents=True, exist_ok=True)
         templateLoader = FileSystemLoader(searchpath=f"{os.path.dirname(os.path.realpath(__file__))}/template")
         env = Environment(loader=templateLoader)
-        template = env.get_template(cls.CPU_OpenMP_TEMPLATE)
+        template = env.get_template(self.CPU_OpenMP_TEMPLATE)
 
         if isinstance(cmds, str):
             cmds = [cmds]
@@ -267,9 +266,9 @@ class SlurmPool:
             node=node,
             cpus_per_task=cpus_per_task,
             cmds='\n'.join(cmds),
-            log_dir=cls.LOG_DIR,
+            log_dir=self.log_dir,
         )
-        script_path = f'{cls.SCRIPTS_DIR}/{job_name}.sh'
+        script_path = f'{self.scripts_dir}/{job_name}.sh'
         with open(script_path, 'w') as f:
             f.write(output_from_parsed_template)
         command = ['chmod', '755', script_path]
@@ -369,8 +368,8 @@ class SlurmPool:
                         'stderr': f'{task_name}.err.log',
                         'cmd': cmds[start:end],
                     }
-        with open(f'{self.FILE_DIR}/{self.time_now}.log', 'w') as f:
-            logger.info(f'Writing task log to {self.FILE_DIR}/{self.time_now}.log')
+        with open(f'{self.file_dir}/{self.time_now}.log', 'w') as f:
+            logger.info(f'Writing task log to {self.file_dir}/{self.time_now}.log')
             json.dump(task_log, f, indent=4)
 
     def starmap(self, func: Callable, params: Iterable[Iterable]):

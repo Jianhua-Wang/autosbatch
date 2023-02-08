@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.9] - 2023-02-08
+
+### Added
+
+
+### Changed
+
+- change log file dir to __init__
+
+### Fixed
+
+- log file directory is class atribute
+
 ## [0.1.8] - 2022-12-19
 
 ### Added
