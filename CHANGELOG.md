@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.1] - 2023-03-01
+
+### Added
+
+
+### Changed
+
+- change rich version to 13.3.1
+
+### Fixed
+
+
+
 ## [0.2.0] - 2023-03-01
 
 ### Added
