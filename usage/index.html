@@ -610,101 +610,101 @@ TODO: add with syntax</p>
 </code></pre></div></p>
 <h2 id="usage-for-cli-tool">Usage for CLI tool<a class="headerlink" href="#usage-for-cli-tool" title="Permanent link">&para;</a></h2>
 <h3 id="help-message">help message<a class="headerlink" href="#help-message" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ autosbatch --help
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>autosbatch<span class="w"> </span>--help
 
- Usage: autosbatch <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+<span class="w"> </span>Usage:<span class="w"> </span>autosbatch<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>COMMAND<span class="w"> </span><span class="o">[</span>ARGS<span class="o">]</span>...
 
- Submit <span class="nb">jobs</span> to slurm cluster, without writing slurm script files.
+<span class="w"> </span>Submit<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>slurm<span class="w"> </span>cluster,<span class="w"> </span>without<span class="w"> </span>writing<span class="w"> </span>slurm<span class="w"> </span>script<span class="w"> </span>files.
 
-╭─ Options ───────────────────────────────────────────────────────────────────────╮
-│ --version  -V        Show version.                                              │
-│ --verbose  -v        Show verbose info.                                         │
-│ --dev                Show dev info.                                             │
-│ --help     -h        Show this message and exit.                                │
+╭─<span class="w"> </span>Options<span class="w"> </span>───────────────────────────────────────────────────────────────────────╮
+│<span class="w"> </span>--version<span class="w">  </span>-V<span class="w">        </span>Show<span class="w"> </span>version.<span class="w">                                              </span>│
+│<span class="w"> </span>--verbose<span class="w">  </span>-v<span class="w">        </span>Show<span class="w"> </span>verbose<span class="w"> </span>info.<span class="w">                                         </span>│
+│<span class="w"> </span>--dev<span class="w">                </span>Show<span class="w"> </span>dev<span class="w"> </span>info.<span class="w">                                             </span>│
+│<span class="w"> </span>--help<span class="w">     </span>-h<span class="w">        </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                                </span>│
 ╰─────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ──────────────────────────────────────────────────────────────────────╮
-│ clean              Remove all scripts and logs.                                 │
-│ multi-job          Submit multiple <span class="nb">jobs</span> to slurm cluster.                       │
-│ single-job         Submit a single job to slurm cluster.                        │
+╭─<span class="w"> </span>Commands<span class="w"> </span>──────────────────────────────────────────────────────────────────────╮
+│<span class="w"> </span>clean<span class="w">              </span>Remove<span class="w"> </span>all<span class="w"> </span>scripts<span class="w"> </span>and<span class="w"> </span>logs.<span class="w">                                 </span>│
+│<span class="w"> </span>multi-job<span class="w">          </span>Submit<span class="w"> </span>multiple<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>slurm<span class="w"> </span>cluster.<span class="w">                       </span>│
+│<span class="w"> </span>single-job<span class="w">         </span>Submit<span class="w"> </span>a<span class="w"> </span>single<span class="w"> </span>job<span class="w"> </span>to<span class="w"> </span>slurm<span class="w"> </span>cluster.<span class="w">                        </span>│
 ╰─────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <h3 id="command-single-job">Command: single-job<a class="headerlink" href="#command-single-job" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ autosbatch single-job -h
-─────────────────────────────────── AutoSbatch ────────────────────────────────────
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>autosbatch<span class="w"> </span>single-job<span class="w"> </span>-h
+───────────────────────────────────<span class="w"> </span>AutoSbatch<span class="w"> </span>────────────────────────────────────
 
- Usage: autosbatch single-job <span class="o">[</span>OPTIONS<span class="o">]</span> CMD...
+<span class="w"> </span>Usage:<span class="w"> </span>autosbatch<span class="w"> </span>single-job<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>CMD...
 
- Submit a single job to slurm cluster.
+<span class="w"> </span>Submit<span class="w"> </span>a<span class="w"> </span>single<span class="w"> </span>job<span class="w"> </span>to<span class="w"> </span>slurm<span class="w"> </span>cluster.
 
-╭─ Arguments ─────────────────────────────────────────────────────────────────────╮
-│ *    cmd      CMD...  Command to run. <span class="o">[</span>default: None<span class="o">]</span> <span class="o">[</span>required<span class="o">]</span>                │
+╭─<span class="w"> </span>Arguments<span class="w"> </span>─────────────────────────────────────────────────────────────────────╮
+│<span class="w"> </span>*<span class="w">    </span>cmd<span class="w">      </span>CMD...<span class="w">  </span>Command<span class="w"> </span>to<span class="w"> </span>run.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">                </span>│
 ╰─────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────────╮
-│ --ncpus      -n      INTEGER  Number of cpus. <span class="o">[</span>default: <span class="m">1</span><span class="o">]</span>                      │
-│ --node       -N      TEXT     Node to submit job to. <span class="o">[</span>default: None<span class="o">]</span>            │
-│ --partition  -P      TEXT     Partition to submit <span class="nb">jobs</span> to. <span class="o">[</span>default: None<span class="o">]</span>      │
-│ --job-name   -j      TEXT     Name of the job. <span class="o">[</span>default: job<span class="o">]</span>                   │
-│ --help       -h               Show this message and exit.                       │
+╭─<span class="w"> </span>Options<span class="w"> </span>───────────────────────────────────────────────────────────────────────╮
+│<span class="w"> </span>--ncpus<span class="w">      </span>-n<span class="w">      </span>INTEGER<span class="w">  </span>Number<span class="w"> </span>of<span class="w"> </span>cpus.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="w">                      </span>│
+│<span class="w"> </span>--node<span class="w">       </span>-N<span class="w">      </span>TEXT<span class="w">     </span>Node<span class="w"> </span>to<span class="w"> </span>submit<span class="w"> </span>job<span class="w"> </span>to.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w">            </span>│
+│<span class="w"> </span>--partition<span class="w">  </span>-P<span class="w">      </span>TEXT<span class="w">     </span>Partition<span class="w"> </span>to<span class="w"> </span>submit<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w">      </span>│
+│<span class="w"> </span>--job-name<span class="w">   </span>-j<span class="w">      </span>TEXT<span class="w">     </span>Name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>job.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>job<span class="o">]</span><span class="w">                   </span>│
+│<span class="w"> </span>--help<span class="w">       </span>-h<span class="w">               </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span>exit.<span class="w">                       </span>│
 ╰─────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <p>run example command such as <code>sleep 10</code>
-<div class="highlight"><pre><span></span><code>autosbatch single-job sleep <span class="m">10</span>
-─────────────────────────────────── AutoSbatch ────────────────────────────────────
-<span class="o">[</span><span class="m">22</span>:13:46<span class="o">]</span> WARNING  Hyperthreading is enabled on cpu14, ncpus_per_job is <span class="nb">set</span> to <span class="m">2</span>.
+<div class="highlight"><pre><span></span><code>autosbatch<span class="w"> </span>single-job<span class="w"> </span>sleep<span class="w"> </span><span class="m">10</span>
+───────────────────────────────────<span class="w"> </span>AutoSbatch<span class="w"> </span>────────────────────────────────────
+<span class="o">[</span><span class="m">22</span>:13:46<span class="o">]</span><span class="w"> </span>WARNING<span class="w">  </span>Hyperthreading<span class="w"> </span>is<span class="w"> </span>enabled<span class="w"> </span>on<span class="w"> </span>cpu14,<span class="w"> </span>ncpus_per_job<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span><span class="m">2</span>.
 </code></pre></div></p>
 <h3 id="command-multi-job">Command: multi-job<a class="headerlink" href="#command-multi-job" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>$ autosbatch multi-job -h
-─────────────────────────────────── AutoSbatch ────────────────────────────────────
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>autosbatch<span class="w"> </span>multi-job<span class="w"> </span>-h
+───────────────────────────────────<span class="w"> </span>AutoSbatch<span class="w"> </span>────────────────────────────────────
 
- Usage: autosbatch multi-job <span class="o">[</span>OPTIONS<span class="o">]</span> CMDFILE
+<span class="w"> </span>Usage:<span class="w"> </span>autosbatch<span class="w"> </span>multi-job<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span>CMDFILE
 
- Submit multiple <span class="nb">jobs</span> to slurm cluster.
+<span class="w"> </span>Submit<span class="w"> </span>multiple<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>slurm<span class="w"> </span>cluster.
 
-╭─ Arguments ─────────────────────────────────────────────────────────────────────╮
-│ *    cmdfile      PATH  Path to the <span class="nb">command</span> file. <span class="o">[</span>default: None<span class="o">]</span> <span class="o">[</span>required<span class="o">]</span>    │
+╭─<span class="w"> </span>Arguments<span class="w"> </span>─────────────────────────────────────────────────────────────────────╮
+│<span class="w"> </span>*<span class="w">    </span>cmdfile<span class="w">      </span>PATH<span class="w">  </span>Path<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>file.<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w"> </span><span class="o">[</span>required<span class="o">]</span><span class="w">    </span>│
 ╰─────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ───────────────────────────────────────────────────────────────────────╮
-│ --pool-size          -p      INTEGER RANGE             Number of <span class="nb">jobs</span> to submit │
-│                              <span class="o">[</span><span class="m">0</span>&lt;<span class="o">=</span>x&lt;<span class="o">=</span><span class="m">1000</span><span class="o">]</span>              at the same time.        │
-│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
-│ --ncpus-per-job      -n      INTEGER                   Number of cpus per job.  │
-│                                                        <span class="o">[</span>default: <span class="m">1</span><span class="o">]</span>             │
-│ --max-jobs-per-node  -m      INTEGER                   Maximum number of <span class="nb">jobs</span>   │
-│                                                        to submit to a single    │
-│                                                        node.                    │
-│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
-│ --node-list          -l      TEXT                      List of nodes to submit  │
-│                                                        <span class="nb">jobs</span> to. e.g. <span class="s2">&quot;-l node1  │</span>
-<span class="s2">│                                                        -l node2 -l node3&quot;</span>       │
-│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
-│ --partition          -P      TEXT                      Partition to submit <span class="nb">jobs</span> │
-│                                                        to.                      │
-│                                                        <span class="o">[</span>default: None<span class="o">]</span>          │
-│ --job-name           -j      TEXT                      Name of the job.         │
-│                                                        <span class="o">[</span>default: job<span class="o">]</span>           │
-│ --help               -h                                Show this message and    │
-│                                                        exit.                    │
+╭─<span class="w"> </span>Options<span class="w"> </span>───────────────────────────────────────────────────────────────────────╮
+│<span class="w"> </span>--pool-size<span class="w">          </span>-p<span class="w">      </span>INTEGER<span class="w"> </span>RANGE<span class="w">             </span>Number<span class="w"> </span>of<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>submit<span class="w"> </span>│
+│<span class="w">                              </span><span class="o">[</span><span class="m">0</span>&lt;<span class="o">=</span>x&lt;<span class="o">=</span><span class="m">1000</span><span class="o">]</span><span class="w">              </span>at<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>time.<span class="w">        </span>│
+│<span class="w">                                                        </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w">          </span>│
+│<span class="w"> </span>--ncpus-per-job<span class="w">      </span>-n<span class="w">      </span>INTEGER<span class="w">                   </span>Number<span class="w"> </span>of<span class="w"> </span>cpus<span class="w"> </span>per<span class="w"> </span>job.<span class="w">  </span>│
+│<span class="w">                                                        </span><span class="o">[</span>default:<span class="w"> </span><span class="m">1</span><span class="o">]</span><span class="w">             </span>│
+│<span class="w"> </span>--max-jobs-per-node<span class="w">  </span>-m<span class="w">      </span>INTEGER<span class="w">                   </span>Maximum<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span><span class="nb">jobs</span><span class="w">   </span>│
+│<span class="w">                                                        </span>to<span class="w"> </span>submit<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>single<span class="w">    </span>│
+│<span class="w">                                                        </span>node.<span class="w">                    </span>│
+│<span class="w">                                                        </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w">          </span>│
+│<span class="w"> </span>--node-list<span class="w">          </span>-l<span class="w">      </span>TEXT<span class="w">                      </span>List<span class="w"> </span>of<span class="w"> </span>nodes<span class="w"> </span>to<span class="w"> </span>submit<span class="w">  </span>│
+│<span class="w">                                                        </span><span class="nb">jobs</span><span class="w"> </span>to.<span class="w"> </span>e.g.<span class="w"> </span><span class="s2">&quot;-l node1  │</span>
+<span class="s2">│                                                        -l node2 -l node3&quot;</span><span class="w">       </span>│
+│<span class="w">                                                        </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w">          </span>│
+│<span class="w"> </span>--partition<span class="w">          </span>-P<span class="w">      </span>TEXT<span class="w">                      </span>Partition<span class="w"> </span>to<span class="w"> </span>submit<span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>│
+│<span class="w">                                                        </span>to.<span class="w">                      </span>│
+│<span class="w">                                                        </span><span class="o">[</span>default:<span class="w"> </span>None<span class="o">]</span><span class="w">          </span>│
+│<span class="w"> </span>--job-name<span class="w">           </span>-j<span class="w">      </span>TEXT<span class="w">                      </span>Name<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>job.<span class="w">         </span>│
+│<span class="w">                                                        </span><span class="o">[</span>default:<span class="w"> </span>job<span class="o">]</span><span class="w">           </span>│
+│<span class="w"> </span>--help<span class="w">               </span>-h<span class="w">                                </span>Show<span class="w"> </span>this<span class="w"> </span>message<span class="w"> </span>and<span class="w">    </span>│
+│<span class="w">                                                        </span>exit.<span class="w">                    </span>│
 ╰─────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <p>submit 10 commands to slurm</p>
 <p>Step1. write the commands into a text file, one command per line.
-<div class="highlight"><pre><span></span><code>$ cat ./cmd.sh
-sleep <span class="m">0</span>
-sleep <span class="m">1</span>
-sleep <span class="m">2</span>
-sleep <span class="m">3</span>
-sleep <span class="m">4</span>
-sleep <span class="m">5</span>
-sleep <span class="m">6</span>
-sleep <span class="m">7</span>
-sleep <span class="m">8</span>
-sleep <span class="m">9</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>./cmd.sh
+sleep<span class="w"> </span><span class="m">0</span>
+sleep<span class="w"> </span><span class="m">1</span>
+sleep<span class="w"> </span><span class="m">2</span>
+sleep<span class="w"> </span><span class="m">3</span>
+sleep<span class="w"> </span><span class="m">4</span>
+sleep<span class="w"> </span><span class="m">5</span>
+sleep<span class="w"> </span><span class="m">6</span>
+sleep<span class="w"> </span><span class="m">7</span>
+sleep<span class="w"> </span><span class="m">8</span>
+sleep<span class="w"> </span><span class="m">9</span>
 </code></pre></div></p>
 <p>Step2 run <code>multi-job</code> command
-<div class="highlight"><pre><span></span><code>$ autosbatch multi-job --max-jobs-per-node <span class="m">3</span> -P gpu -l gpu02 -l gpu03 ./cmd.sh
-────────────────────────────────── AutoSbatch ──────────────────────────────────
-Submitting to gpu02... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
-Submitting to gpu03... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>autosbatch<span class="w"> </span>multi-job<span class="w"> </span>--max-jobs-per-node<span class="w"> </span><span class="m">3</span><span class="w"> </span>-P<span class="w"> </span>gpu<span class="w"> </span>-l<span class="w"> </span>gpu02<span class="w"> </span>-l<span class="w"> </span>gpu03<span class="w"> </span>./cmd.sh
+──────────────────────────────────<span class="w"> </span>AutoSbatch<span class="w"> </span>──────────────────────────────────
+Submitting<span class="w"> </span>to<span class="w"> </span>gpu02...<span class="w"> </span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class="w"> </span><span class="m">3</span>/3<span class="w"> </span><span class="m">0</span>:00:00
+Submitting<span class="w"> </span>to<span class="w"> </span>gpu03...<span class="w"> </span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class="w"> </span><span class="m">3</span>/3<span class="w"> </span><span class="m">0</span>:00:00
 </code></pre></div></p>
 <h3 id="command-clean">Command: clean<a class="headerlink" href="#command-clean" title="Permanent link">&para;</a></h3>
 <p>remove the directory contains scripts and logs
@@ -713,32 +713,32 @@ Submitting to gpu03... ━━━━━━━━━━━━━━━━━━━
 <h3 id="enable-verbose">enable <code>verbose</code><a class="headerlink" href="#enable-verbose" title="Permanent link">&para;</a></h3>
 <p>add <code>-v</code> or <code>--verbose</code> between <code>autosbatch</code> and <code>command</code></p>
 <p>e.g.:
-<div class="highlight"><pre><span></span><code>$ autosbatch -v multi-job --max-jobs-per-node <span class="m">3</span> -P gpu -l gpu02 -l gpu03 ./cmd.sh
-────────────────────────────────── AutoSbatch ──────────────────────────────────
-<span class="o">[</span><span class="m">22</span>:21:44<span class="o">]</span> INFO     Verbose mode is on.
-           INFO     Found <span class="m">2</span> available nodes.
-           INFO     <span class="m">10</span> <span class="nb">jobs</span> to excute, allocated to <span class="m">6</span> tasks.
-           INFO     Each task will use <span class="m">1</span> cpus.
-           INFO     Used <span class="m">2</span> nodes.
-           INFO     Each node will excute <span class="m">3</span> tasks <span class="k">in</span> parallel.
-           INFO     <span class="o">{</span><span class="s1">&#39;gpu02&#39;</span>: <span class="m">3</span>, <span class="s1">&#39;gpu03&#39;</span>: <span class="m">3</span><span class="o">}</span>
-           INFO     gpu02: <span class="m">3</span> tasks
-           INFO     Task <span class="m">0</span>: containing job <span class="m">0</span>-1
-           INFO     Sumbitted Task: job_000 to gpu02, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254554</span>
-<span class="o">[</span><span class="m">22</span>:21:45<span class="o">]</span> INFO     Task <span class="m">1</span>: containing job <span class="m">2</span>-3
-           INFO     Sumbitted Task: job_001 to gpu02, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254555</span>
-           INFO     Task <span class="m">2</span>: containing job <span class="m">4</span>-5
-<span class="o">[</span><span class="m">22</span>:21:46<span class="o">]</span> INFO     Sumbitted Task: job_002 to gpu02, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254556</span>
-           INFO     gpu03: <span class="m">3</span> tasks
-           INFO     Task <span class="m">3</span>: containing job <span class="m">6</span>-7
-           INFO     Sumbitted Task: job_003 to gpu03, containing <span class="m">2</span> jobs. Slurm ID: <span class="m">254557</span>
-<span class="o">[</span><span class="m">22</span>:21:47<span class="o">]</span> INFO     Task <span class="m">4</span>: containing job <span class="m">8</span>-8
-           INFO     Sumbitted Task: job_004 to gpu03, containing <span class="m">1</span> jobs. Slurm ID: <span class="m">254558</span>
-           INFO     Task <span class="m">5</span>: containing job <span class="m">9</span>-9
-           INFO     Sumbitted Task: job_005 to gpu03, containing <span class="m">1</span> jobs. Slurm ID: <span class="m">254559</span>
-Submitting to gpu02... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
-Submitting to gpu03... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class="m">3</span>/3 <span class="m">0</span>:00:00
-           INFO     Writing task log to .autosbatch/1219222144/1219222144.log
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>autosbatch<span class="w"> </span>-v<span class="w"> </span>multi-job<span class="w"> </span>--max-jobs-per-node<span class="w"> </span><span class="m">3</span><span class="w"> </span>-P<span class="w"> </span>gpu<span class="w"> </span>-l<span class="w"> </span>gpu02<span class="w"> </span>-l<span class="w"> </span>gpu03<span class="w"> </span>./cmd.sh
+──────────────────────────────────<span class="w"> </span>AutoSbatch<span class="w"> </span>──────────────────────────────────
+<span class="o">[</span><span class="m">22</span>:21:44<span class="o">]</span><span class="w"> </span>INFO<span class="w">     </span>Verbose<span class="w"> </span>mode<span class="w"> </span>is<span class="w"> </span>on.
+<span class="w">           </span>INFO<span class="w">     </span>Found<span class="w"> </span><span class="m">2</span><span class="w"> </span>available<span class="w"> </span>nodes.
+<span class="w">           </span>INFO<span class="w">     </span><span class="m">10</span><span class="w"> </span><span class="nb">jobs</span><span class="w"> </span>to<span class="w"> </span>excute,<span class="w"> </span>allocated<span class="w"> </span>to<span class="w"> </span><span class="m">6</span><span class="w"> </span>tasks.
+<span class="w">           </span>INFO<span class="w">     </span>Each<span class="w"> </span>task<span class="w"> </span>will<span class="w"> </span>use<span class="w"> </span><span class="m">1</span><span class="w"> </span>cpus.
+<span class="w">           </span>INFO<span class="w">     </span>Used<span class="w"> </span><span class="m">2</span><span class="w"> </span>nodes.
+<span class="w">           </span>INFO<span class="w">     </span>Each<span class="w"> </span>node<span class="w"> </span>will<span class="w"> </span>excute<span class="w"> </span><span class="m">3</span><span class="w"> </span>tasks<span class="w"> </span><span class="k">in</span><span class="w"> </span>parallel.
+<span class="w">           </span>INFO<span class="w">     </span><span class="o">{</span><span class="s1">&#39;gpu02&#39;</span>:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="s1">&#39;gpu03&#39;</span>:<span class="w"> </span><span class="m">3</span><span class="o">}</span>
+<span class="w">           </span>INFO<span class="w">     </span>gpu02:<span class="w"> </span><span class="m">3</span><span class="w"> </span>tasks
+<span class="w">           </span>INFO<span class="w">     </span>Task<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>containing<span class="w"> </span>job<span class="w"> </span><span class="m">0</span>-1
+<span class="w">           </span>INFO<span class="w">     </span>Sumbitted<span class="w"> </span>Task:<span class="w"> </span>job_000<span class="w"> </span>to<span class="w"> </span>gpu02,<span class="w"> </span>containing<span class="w"> </span><span class="m">2</span><span class="w"> </span>jobs.<span class="w"> </span>Slurm<span class="w"> </span>ID:<span class="w"> </span><span class="m">254554</span>
+<span class="o">[</span><span class="m">22</span>:21:45<span class="o">]</span><span class="w"> </span>INFO<span class="w">     </span>Task<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>containing<span class="w"> </span>job<span class="w"> </span><span class="m">2</span>-3
+<span class="w">           </span>INFO<span class="w">     </span>Sumbitted<span class="w"> </span>Task:<span class="w"> </span>job_001<span class="w"> </span>to<span class="w"> </span>gpu02,<span class="w"> </span>containing<span class="w"> </span><span class="m">2</span><span class="w"> </span>jobs.<span class="w"> </span>Slurm<span class="w"> </span>ID:<span class="w"> </span><span class="m">254555</span>
+<span class="w">           </span>INFO<span class="w">     </span>Task<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>containing<span class="w"> </span>job<span class="w"> </span><span class="m">4</span>-5
+<span class="o">[</span><span class="m">22</span>:21:46<span class="o">]</span><span class="w"> </span>INFO<span class="w">     </span>Sumbitted<span class="w"> </span>Task:<span class="w"> </span>job_002<span class="w"> </span>to<span class="w"> </span>gpu02,<span class="w"> </span>containing<span class="w"> </span><span class="m">2</span><span class="w"> </span>jobs.<span class="w"> </span>Slurm<span class="w"> </span>ID:<span class="w"> </span><span class="m">254556</span>
+<span class="w">           </span>INFO<span class="w">     </span>gpu03:<span class="w"> </span><span class="m">3</span><span class="w"> </span>tasks
+<span class="w">           </span>INFO<span class="w">     </span>Task<span class="w"> </span><span class="m">3</span>:<span class="w"> </span>containing<span class="w"> </span>job<span class="w"> </span><span class="m">6</span>-7
+<span class="w">           </span>INFO<span class="w">     </span>Sumbitted<span class="w"> </span>Task:<span class="w"> </span>job_003<span class="w"> </span>to<span class="w"> </span>gpu03,<span class="w"> </span>containing<span class="w"> </span><span class="m">2</span><span class="w"> </span>jobs.<span class="w"> </span>Slurm<span class="w"> </span>ID:<span class="w"> </span><span class="m">254557</span>
+<span class="o">[</span><span class="m">22</span>:21:47<span class="o">]</span><span class="w"> </span>INFO<span class="w">     </span>Task<span class="w"> </span><span class="m">4</span>:<span class="w"> </span>containing<span class="w"> </span>job<span class="w"> </span><span class="m">8</span>-8
+<span class="w">           </span>INFO<span class="w">     </span>Sumbitted<span class="w"> </span>Task:<span class="w"> </span>job_004<span class="w"> </span>to<span class="w"> </span>gpu03,<span class="w"> </span>containing<span class="w"> </span><span class="m">1</span><span class="w"> </span>jobs.<span class="w"> </span>Slurm<span class="w"> </span>ID:<span class="w"> </span><span class="m">254558</span>
+<span class="w">           </span>INFO<span class="w">     </span>Task<span class="w"> </span><span class="m">5</span>:<span class="w"> </span>containing<span class="w"> </span>job<span class="w"> </span><span class="m">9</span>-9
+<span class="w">           </span>INFO<span class="w">     </span>Sumbitted<span class="w"> </span>Task:<span class="w"> </span>job_005<span class="w"> </span>to<span class="w"> </span>gpu03,<span class="w"> </span>containing<span class="w"> </span><span class="m">1</span><span class="w"> </span>jobs.<span class="w"> </span>Slurm<span class="w"> </span>ID:<span class="w"> </span><span class="m">254559</span>
+Submitting<span class="w"> </span>to<span class="w"> </span>gpu02...<span class="w"> </span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class="w"> </span><span class="m">3</span>/3<span class="w"> </span><span class="m">0</span>:00:00
+Submitting<span class="w"> </span>to<span class="w"> </span>gpu03...<span class="w"> </span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<span class="w"> </span><span class="m">3</span>/3<span class="w"> </span><span class="m">0</span>:00:00
+<span class="w">           </span>INFO<span class="w">     </span>Writing<span class="w"> </span>task<span class="w"> </span>log<span class="w"> </span>to<span class="w"> </span>.autosbatch/1219222144/1219222144.log
 </code></pre></div></p>
 
 
