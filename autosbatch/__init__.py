@@ -6,7 +6,7 @@ from rich.logging import RichHandler
 from autosbatch.autosbatch import SlurmPool
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.WARNING,
     format="%(message)s",
     datefmt="[%X]",
     handlers=[RichHandler(rich_tracebacks=True, show_path=False)],

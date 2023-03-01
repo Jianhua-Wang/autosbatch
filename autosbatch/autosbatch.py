@@ -14,7 +14,6 @@ from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, T
 
 # from autosbatch.logger import logger
 
-logger = logging.getLogger('autosbatch')
 
 
 class SlurmPool:
@@ -52,7 +51,7 @@ class SlurmPool:
             Maximum number of jobs to submit, by default 1000
         """
         self.ncpus_per_job = ncpus_per_job
-
+        self.logger = logging.getLogger('autosbatch')
         self.nodes = self.get_nodes()
         self._get_avail_nodes(node_list=node_list, partition=partition)
         self.node_list = list(self.nodes.keys())
@@ -181,7 +180,7 @@ class SlurmPool:
             for node in self.nodes.keys():
                 if self._check_hypertreading(node):
                     self.ncpus_per_job += 1
-                    logger.warning(
+                    self.logger.warning(
                         f'Hyperthreading is enabled on {node}, ncpus_per_job is set to {self.ncpus_per_job}.'
                     )
                     break
@@ -253,7 +252,7 @@ class SlurmPool:
         -------
         None
         """
-        # logger.setLevel(logging_level)
+        # self.logger.setLevel(logging_level)
         Path(self.scripts_dir).mkdir(parents=True, exist_ok=True)
         Path(self.log_dir).mkdir(parents=True, exist_ok=True)
         templateLoader = FileSystemLoader(searchpath=f"{os.path.dirname(os.path.realpath(__file__))}/template")
@@ -278,8 +277,8 @@ class SlurmPool:
         command = ['sbatch', script_path]
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
         slurm_id = result.stdout.strip().split()[-1]
-        logger.info(f'Sumbitted Task: {job_name} to {node}, containing {len(cmds)} jobs. Slurm ID: {slurm_id}')
-        logger.debug(f'Commands: {cmds}')
+        self.logger.info(f'Sumbitted Task: {job_name} to {node}, containing {len(cmds)} jobs. Slurm ID: {slurm_id}')
+        self.logger.debug(f'Commands: {cmds}')
 
     def multi_submit(
         self,
@@ -313,11 +312,11 @@ class SlurmPool:
             import random
 
             random.shuffle(cmds)
-        # logger.setLevel(logging_level)
-        logger.info(f'Found {len(self.nodes)} available nodes.')
+        # self.logger.setLevel(logging_level)
+        self.logger.info(f'Found {len(self.nodes)} available nodes.')
         self.pool_size = min(self.pool_size, len(cmds))
-        logger.info(f'{len(cmds):,} jobs to excute, allocated to {self.pool_size} tasks.')
-        logger.info(f'Each task will use {self.ncpus_per_job} cpus.')
+        self.logger.info(f'{len(cmds):,} jobs to excute, allocated to {self.pool_size} tasks.')
+        self.logger.info(f'Each task will use {self.ncpus_per_job} cpus.')
 
         used_nodes = {}
         registed_jobs = 0
@@ -331,9 +330,9 @@ class SlurmPool:
             else:
                 used_nodes[k] -= registed_jobs - self.pool_size
                 break
-        logger.info(f'Used {len(used_nodes)} nodes.')
-        logger.info(f'Each node will excute {max(used_nodes.values())} tasks in parallel.')
-        logger.info(f'{used_nodes}')
+        self.logger.info(f'Used {len(used_nodes)} nodes.')
+        self.logger.info(f'Each node will excute {max(used_nodes.values())} tasks in parallel.')
+        self.logger.info(f'{used_nodes}')
         k, m = divmod(len(cmds), self.pool_size)
         ith = 0
         task_log = {}
@@ -345,12 +344,12 @@ class SlurmPool:
             auto_refresh=False,
         ) as progress:
             for node, n_jobs in used_nodes.items():
-                logger.info(f'{node}: {n_jobs} tasks')
+                self.logger.info(f'{node}: {n_jobs} tasks')
                 task = progress.add_task(f"Submitting to {node}...", total=n_jobs)
                 for _ in range(n_jobs):
                     time.sleep(sleep_time)
                     start, end = ith * k + min(ith, m), (ith + 1) * k + min(ith + 1, m)
-                    logger.info(f'Task {ith}: containing job {start}-{end-1}')
+                    self.logger.info(f'Task {ith}: containing job {start}-{end-1}')
                     task_name = f'{job_name}_{ith:>03}'
                     self.single_submit(
                         self.nodes[node]['partition'],
@@ -371,7 +370,7 @@ class SlurmPool:
                         'cmd': cmds[start:end],
                     }
         with open(f'{self.file_dir}/{self.time_now}.log', 'w') as f:
-            logger.info(f'Writing task log to {self.file_dir}/{self.time_now}.log')
+            self.logger.info(f'Writing task log to {self.file_dir}/{self.time_now}.log')
             json.dump(task_log, f, indent=4)
 
     def starmap(self, func: Callable, params: Iterable[Iterable]):

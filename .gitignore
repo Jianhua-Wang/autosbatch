@@ -116,3 +116,5 @@ site/
 
 # autosbatch log files
 .autosbatch/
+
+try.ipynb
