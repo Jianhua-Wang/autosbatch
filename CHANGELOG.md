@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0] - 2023-03-01
+
+### Added
+
+
+### Changed
+
+- change log level to info
+
+### Fixed
+
+
 ## [0.1.9] - 2023-02-08
 
 ### Added

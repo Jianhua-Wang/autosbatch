@@ -12,7 +12,9 @@ from typing import Callable, Dict, Iterable, List, Optional, Union
 from jinja2 import Environment, FileSystemLoader
 from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, TimeRemainingColumn
 
-from autosbatch.logger import logger
+# from autosbatch.logger import logger
+
+logger = logging.getLogger('autosbatch')
 
 
 class SlurmPool:
@@ -227,7 +229,7 @@ class SlurmPool:
         cpus_per_task: int,
         cmds: Union[str, List[str]],
         job_name: str = 'job',
-        logging_level: int = logging.WARNING,
+        # logging_level: int = logging.WARNING,
     ):
         """
         Submit a single job.
@@ -251,7 +253,7 @@ class SlurmPool:
         -------
         None
         """
-        logger.setLevel(logging_level)
+        # logger.setLevel(logging_level)
         Path(self.scripts_dir).mkdir(parents=True, exist_ok=True)
         Path(self.log_dir).mkdir(parents=True, exist_ok=True)
         templateLoader = FileSystemLoader(searchpath=f"{os.path.dirname(os.path.realpath(__file__))}/template")
@@ -283,7 +285,7 @@ class SlurmPool:
         self,
         cmds: List[str],
         job_name: str,
-        logging_level: int = logging.WARNING,
+        # logging_level: int = logging.WARNING,
         shuffle: bool = False,
         sleep_time: float = 0.5,
     ):
@@ -311,7 +313,7 @@ class SlurmPool:
             import random
 
             random.shuffle(cmds)
-        logger.setLevel(logging_level)
+        # logger.setLevel(logging_level)
         logger.info(f'Found {len(self.nodes)} available nodes.')
         self.pool_size = min(self.pool_size, len(cmds))
         logger.info(f'{len(cmds):,} jobs to excute, allocated to {self.pool_size} tasks.')
@@ -356,7 +358,7 @@ class SlurmPool:
                         self.ncpus_per_job,
                         cmds[start:end],
                         task_name,
-                        logging_level,
+                        # logging_level,
                     )
                     progress.update(task, advance=1)
                     progress.refresh()

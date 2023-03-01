@@ -8,14 +8,16 @@ import typer
 from rich.console import Console
 
 from autosbatch import SlurmPool, __version__
-from autosbatch.logger import logger
+# from autosbatch.logger import logger
+
+logger = logging.getLogger('autosbatch')
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 app = typer.Typer(context_settings=CONTEXT_SETTINGS, add_completion=False)
 
-config = {
-    'logging_level': logging.WARNING,
-}
+# config = {
+#     'logging_level': logging.WARNING,
+# }
 
 
 @app.command()
@@ -38,7 +40,7 @@ def single_job(
         node_list=node_list,
         partition=partition,
     )
-    p.multi_submit(cmds=cmd, job_name=job_name, logging_level=config['logging_level'])
+    p.multi_submit(cmds=cmd, job_name=job_name)
 
 
 @app.command()
@@ -69,14 +71,15 @@ def multi_job(
         node_list=node_list,
         partition=partition,
     )
-    p.multi_submit(cmds=cmds, job_name=job_name, logging_level=config['logging_level'])
+    p.multi_submit(cmds=cmds, job_name=job_name)
 
 
 @app.command()
 def clean():
     """Remove all scripts and logs."""
     SlurmPool.clean()
-    logger.setLevel(config['logging_level'])
+    # logger.setLevel(config['logging_level'])
+    logger.setLevel(logging.INFO)
     logger.info('Cleaned all scripts and logs.')
 
 
@@ -93,10 +96,10 @@ def main(
         typer.echo(f'AutoSbatch version: {__version__}')
         raise typer.Exit()
     if verbose:
-        config['logging_level'] = logging.INFO
+        logger.setLevel(logging.INFO)
         logger.info('Verbose mode is on.')
     if dev:
-        config['logging_level'] = logging.DEBUG
+        logger.setLevel(logging.DEBUG)
         logger.debug('Dev mode is on.')
 
 
