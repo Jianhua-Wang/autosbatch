@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.3] - 2023-06-26
+
+### Added
+
+### Changed
+
+### Fixed
+- fix sinfo output contains N/A
+
 ## [0.2.2] - 2023-03-01
 
 ### Added

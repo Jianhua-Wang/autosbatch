@@ -93,15 +93,18 @@ class SlurmPool:
             if line.startswith('HOSTNAMES'):
                 continue
             node, free_mem, memory, avail, cpus, free_cpus, load, partition, state = line.split()
+            free_mem = int(free_mem) if free_mem != 'N/A' else 0
+            memory = int(memory) if memory != 'N/A' else 0
+            load = float(load) if load != 'N/A' else 0
             nodes[node] = {
-                'free_mem': int(free_mem),
-                'used_mem': int(memory) - int(free_mem),
-                'memory': int(memory),
+                'free_mem': free_mem,
+                'used_mem': memory - free_mem,
+                'memory': memory,
                 'AVAIL': avail,
                 'cpus': int(cpus),
                 'used_cpus': int(free_cpus.split('/')[0]),
                 'free_cpus': int(free_cpus.split('/')[1]),
-                'load': float(load),
+                'load': load,
                 'partition': partition,
                 'state': state,
             }
