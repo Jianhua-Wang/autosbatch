@@ -1,6 +1,5 @@
 # Changelog
 
-<<<<<<< HEAD
 ## [0.2.3] - 2023-09-25
 
 ### Added
@@ -11,17 +10,7 @@
 
 ### Fixed
 - fix dependencies
-=======
-## [0.2.3] - 2023-06-26
 
-### Added
-
-### Changed
-
-### Fixed
-- fix sinfo output contains N/A
-
->>>>>>> c14e3679000a1d492a641487aa72362fb168535f
 ## [0.2.2] - 2023-03-01
 
 ### Added
