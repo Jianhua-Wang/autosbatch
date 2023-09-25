@@ -47,6 +47,7 @@ rich = "^13.3.1"
 jinja2 = "^3.1.2"
 # ipywidgets = "^8.0.4"
 
+
 [tool.poetry.dev-dependencies]
 black = ">=22.3.0"
 isort = "^5.8.0"
@@ -66,7 +67,7 @@ mkdocs = "^1.5.3"
 mkdocs-include-markdown-plugin = "^6.0.1"
 mkdocs-material = "^9.4.2"
 mkdocs-autorefs = "^0.5.0"
-mkdocstrings = "^0.23.0"
+mkdocstrings-python = "^1.7.0"
 mkdocs-material-extensions = "^1.2"
 jupyter = "^1.0.0"
 ipywidgets = "^8.0.4"
