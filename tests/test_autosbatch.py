@@ -1,8 +1,9 @@
 """test autosbatch.py."""
 
-from autosbatch.autosbatch import SlurmPool
 import logging
 from pathlib import Path
+
+from autosbatch.autosbatch import SlurmPool
 
 
 def test_slurm_pool():
@@ -20,19 +21,21 @@ def test_slurm_pool_init():
         pool_size=1,
         ncpus_per_job=2,
         max_jobs_per_node=3,
-        node_list=['cpu01', 'cpu02'],
-        partition='cpuPartition',
+        node_list=["cpu01", "cpu02"],
+        partition="cpuPartition",
     )
     assert p.pool_size == 1
     assert p.ncpus_per_job == 2
     assert p.max_jobs_per_node == 3
-    assert p.node_list == ['cpu01', 'cpu02']
+    assert p.node_list == ["cpu01", "cpu02"]
 
 
 def test_slurm_pool_multi_submit():
     """Test SlurmPool multi_submit."""
     p = SlurmPool()
-    p.multi_submit(cmds=['echo hello'], job_name='test_job', logging_level=logging.DEBUG)
+    p.multi_submit(
+        cmds=["echo hello"], job_name="test_job", logging_level=logging.DEBUG
+    )
     assert p.pool_size == 1
     assert p.ncpus_per_job == 2
     assert p.max_jobs_per_node == 76
@@ -56,11 +59,11 @@ def test_slurm_pool_single_submit():
     """Test SlurmPool single_submit."""
     p = SlurmPool()
     p.single_submit(
-        partition='cpuPartition',
-        node='cpu01',
+        partition="cpuPartition",
+        node="cpu01",
         cpus_per_task=1,
-        cmds=['echo hello'],
-        job_name='test_job',
+        cmds=["echo hello"],
+        job_name="test_job",
         logging_level=logging.DEBUG,
     )
     assert p.pool_size == 1000
