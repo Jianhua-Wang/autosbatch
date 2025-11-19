@@ -1,4 +1,5 @@
 """Main module."""
+
 import datetime
 import json
 import logging
@@ -10,18 +11,23 @@ from subprocess import PIPE, run
 from typing import Callable, Dict, Iterable, List, Optional, Union
 
 from jinja2 import Environment, FileSystemLoader
-from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn, TimeRemainingColumn
+from rich.progress import (
+    BarColumn,
+    MofNCompleteColumn,
+    Progress,
+    TextColumn,
+    TimeRemainingColumn,
+)
 
 # from autosbatch.logger import logger
-
 
 
 class SlurmPool:
     """A class for submitting jobs to Slurm."""
 
-    dir_path = '.autosbatch'
+    dir_path = ".autosbatch"
 
-    CPU_OpenMP_TEMPLATE = 'CPU_OpenMP.j2'
+    CPU_OpenMP_TEMPLATE = "CPU_OpenMP.j2"
 
     def __init__(
         self,
@@ -51,24 +57,25 @@ class SlurmPool:
             Maximum number of jobs to submit, by default 1000
         """
         self.ncpus_per_job = ncpus_per_job
-        self.logger = logging.getLogger('autosbatch')
+        self.logger = logging.getLogger("autosbatch")
         self.nodes = self.get_nodes()
         self._get_avail_nodes(node_list=node_list, partition=partition)
         self.node_list = list(self.nodes.keys())
         if len(self.node_list) == 0:
-            raise RuntimeError('No Nodes are qualtified.')
+            raise RuntimeError("No Nodes are qualtified.")
 
         self._set_max_jobs_per_node(max_jobs_per_node=max_jobs_per_node)
 
-        jobs_on_nodes = {k: v['max_jobs'] for k, v in self.nodes.items()}
+        jobs_on_nodes = {k: v["max_jobs"] for k, v in self.nodes.items()}
         self.jobs_on_nodes = {
-            k: v if v <= self.max_jobs_per_node else self.max_jobs_per_node for k, v in jobs_on_nodes.items()
+            k: v if v <= self.max_jobs_per_node else self.max_jobs_per_node
+            for k, v in jobs_on_nodes.items()
         }
         self._set_pool_size(pool_size=pool_size, max_pool_size=max_pool_size)
-        self.time_now = datetime.datetime.now().strftime('%m%d%H%M%S')
-        self.file_dir = f'{self.dir_path}/{self.time_now}'
-        self.log_dir = f'{self.file_dir}/log'
-        self.scripts_dir = f'{self.file_dir}/scripts'
+        self.time_now = datetime.datetime.now().strftime("%m%d%H%M%S")
+        self.file_dir = f"{self.dir_path}/{self.time_now}"
+        self.log_dir = f"{self.file_dir}/log"
+        self.scripts_dir = f"{self.file_dir}/scripts"
 
     @classmethod
     def get_nodes(cls, sortByload=True) -> Dict:
@@ -85,32 +92,43 @@ class SlurmPool:
         Dict
             Information of nodes, by default
         """
-        command = ['sinfo', '-o', '"%n %e %m %a %c %C %O %R %t"']
+        command = ["sinfo", "-o", '"%n %e %m %a %c %C %O %R %t"']
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
         nodes = {}
         for line in result.stdout.splitlines():
-            line = line.strip('\"')
-            if line.startswith('HOSTNAMES'):
+            line = line.strip('"')
+            if line.startswith("HOSTNAMES"):
                 continue
-            node, free_mem, memory, avail, cpus, free_cpus, load, partition, state = line.split()
-            free_mem = int(free_mem) if free_mem != 'N/A' else 0
-            memory = int(memory) if memory != 'N/A' else 0
-            load = float(load) if load != 'N/A' else 0
+            node, free_mem, memory, avail, cpus, free_cpus, load, partition, state = (
+                line.split()
+            )
+            free_mem = int(free_mem) if free_mem != "N/A" else 0
+            memory = int(memory) if memory != "N/A" else 0
+            load = float(load) if load != "N/A" else 0
             nodes[node] = {
-                'free_mem': free_mem,
-                'used_mem': memory - free_mem,
-                'memory': memory,
-                'AVAIL': avail,
-                'cpus': int(cpus),
-                'used_cpus': int(free_cpus.split('/')[0]),
-                'free_cpus': int(free_cpus.split('/')[1]),
-                'load': load,
-                'partition': partition,
-                'state': state,
+                "free_mem": free_mem,
+                "used_mem": memory - free_mem,
+                "memory": memory,
+                "AVAIL": avail,
+                "cpus": int(cpus),
+                "used_cpus": int(free_cpus.split("/")[0]),
+                "free_cpus": int(free_cpus.split("/")[1]),
+                "load": load,
+                "partition": partition,
+                "state": state,
             }
         if sortByload:
             nodes = dict(
-                OrderedDict(sorted(nodes.items(), key=lambda x: (x[1]['load'], x[1]['used_mem'], x[1]['used_cpus'])))
+                OrderedDict(
+                    sorted(
+                        nodes.items(),
+                        key=lambda x: (
+                            x[1]["load"],
+                            x[1]["used_mem"],
+                            x[1]["used_cpus"],
+                        ),
+                    )
+                )
             )
         return nodes
 
@@ -128,16 +146,16 @@ class SlurmPool:
         bool
             True if hyperthreading is enabled, False otherwise
         """
-        command = ['scontrol', 'show', 'node', node_name]
+        command = ["scontrol", "show", "node", node_name]
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
-        if 'ThreadsPerCore=2' in result.stdout:
+        if "ThreadsPerCore=2" in result.stdout:
             return True
         else:
             return False
 
     def _get_avail_nodes(
         self,
-        states: List[str] = ['idle', 'mix'],
+        states: List[str] = ["idle", "mix"],
         node_list: Optional[List[str]] = None,
         partition: Optional[str] = None,
     ) -> None:
@@ -160,12 +178,17 @@ class SlurmPool:
         if node_list:
             self.nodes = {k: self.nodes[k] for k in node_list if k in self.nodes}
         if partition:
-            self.nodes = {k: v for k, v in self.nodes.items() if v['partition'] == partition}
-        self.nodes = {k: v for k, v in self.nodes.items() if v['state'] in states}
-        self.nodes = {k: v for k, v in self.nodes.items() if v['free_cpus'] >= self.ncpus_per_job}
+            self.nodes = {
+                k: v for k, v in self.nodes.items() if v["partition"] == partition
+            }
+        self.nodes = {k: v for k, v in self.nodes.items() if v["state"] in states}
+        self.nodes = {
+            k: v for k, v in self.nodes.items() if v["free_cpus"] >= self.ncpus_per_job
+        }
 
     def _set_max_jobs_per_node(
-        self, max_jobs_per_node: Optional[int] = None,
+        self,
+        max_jobs_per_node: Optional[int] = None,
     ):
         """
         Set max_jobs_per_node.
@@ -184,22 +207,26 @@ class SlurmPool:
                 if self._check_hypertreading(node):
                     self.ncpus_per_job += 1
                     self.logger.warning(
-                        f'Hyperthreading is enabled on {node}, ncpus_per_job is set to {self.ncpus_per_job}.'
+                        f"Hyperthreading is enabled on {node}, ncpus_per_job is set to {self.ncpus_per_job}."
                     )
                     break
         for v in self.nodes.values():
-            v['max_jobs'] = v['free_cpus'] // self.ncpus_per_job
-        avail_max_jobs_per_node = max(v['max_jobs'] for v in self.nodes.values())
+            v["max_jobs"] = v["free_cpus"] // self.ncpus_per_job
+        avail_max_jobs_per_node = max(v["max_jobs"] for v in self.nodes.values())
         if max_jobs_per_node:
             if max_jobs_per_node > avail_max_jobs_per_node:
-                raise RuntimeError(f'max_jobs_per_node should not be larger than {avail_max_jobs_per_node}')
+                raise RuntimeError(
+                    f"max_jobs_per_node should not be larger than {avail_max_jobs_per_node}"
+                )
             else:
                 self.max_jobs_per_node = max_jobs_per_node
         else:
             self.max_jobs_per_node = avail_max_jobs_per_node
 
     def _set_pool_size(
-        self, max_pool_size: int, pool_size: Optional[int] = None,
+        self,
+        max_pool_size: int,
+        pool_size: Optional[int] = None,
     ):
         """
         Set pool_size.
@@ -218,7 +245,9 @@ class SlurmPool:
         max_pool_size = min(sum(self.jobs_on_nodes.values()), max_pool_size)
         if pool_size:
             if pool_size > max_pool_size:
-                raise RuntimeError(f'pool_size should not be larger than {max_pool_size}')
+                raise RuntimeError(
+                    f"pool_size should not be larger than {max_pool_size}"
+                )
             else:
                 self.pool_size = pool_size
         else:
@@ -230,7 +259,7 @@ class SlurmPool:
         node: str,
         cpus_per_task: int,
         cmds: Union[str, List[str]],
-        job_name: str = 'job',
+        job_name: str = "job",
         # logging_level: int = logging.WARNING,
     ):
         """
@@ -258,7 +287,9 @@ class SlurmPool:
         # self.logger.setLevel(logging_level)
         Path(self.scripts_dir).mkdir(parents=True, exist_ok=True)
         Path(self.log_dir).mkdir(parents=True, exist_ok=True)
-        templateLoader = FileSystemLoader(searchpath=f"{os.path.dirname(os.path.realpath(__file__))}/template")
+        templateLoader = FileSystemLoader(
+            searchpath=f"{os.path.dirname(os.path.realpath(__file__))}/template"
+        )
         env = Environment(loader=templateLoader)
         template = env.get_template(self.CPU_OpenMP_TEMPLATE)
 
@@ -269,19 +300,21 @@ class SlurmPool:
             partition=partition,
             node=node,
             cpus_per_task=cpus_per_task,
-            cmds='\n'.join(cmds),
+            cmds="\n".join(cmds),
             log_dir=self.log_dir,
         )
-        script_path = f'{self.scripts_dir}/{job_name}.sh'
-        with open(script_path, 'w') as f:
+        script_path = f"{self.scripts_dir}/{job_name}.sh"
+        with open(script_path, "w") as f:
             f.write(output_from_parsed_template)
-        command = ['chmod', '755', script_path]
+        command = ["chmod", "755", script_path]
         _ = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
-        command = ['sbatch', script_path]
+        command = ["sbatch", script_path]
         result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
         slurm_id = result.stdout.strip().split()[-1]
-        self.logger.info(f'Sumbitted Task: {job_name} to {node}, containing {len(cmds)} jobs. Slurm ID: {slurm_id}')
-        self.logger.debug(f'Commands: {cmds}')
+        self.logger.info(
+            f"Sumbitted Task: {job_name} to {node}, containing {len(cmds)} jobs. Slurm ID: {slurm_id}"
+        )
+        self.logger.debug(f"Commands: {cmds}")
 
     def multi_submit(
         self,
@@ -316,10 +349,12 @@ class SlurmPool:
 
             random.shuffle(cmds)
         # self.logger.setLevel(logging_level)
-        self.logger.info(f'Found {len(self.nodes)} available nodes.')
+        self.logger.info(f"Found {len(self.nodes)} available nodes.")
         self.pool_size = min(self.pool_size, len(cmds))
-        self.logger.info(f'{len(cmds):,} jobs to excute, allocated to {self.pool_size} tasks.')
-        self.logger.info(f'Each task will use {self.ncpus_per_job} cpus.')
+        self.logger.info(
+            f"{len(cmds):,} jobs to excute, allocated to {self.pool_size} tasks."
+        )
+        self.logger.info(f"Each task will use {self.ncpus_per_job} cpus.")
 
         used_nodes = {}
         registed_jobs = 0
@@ -333,9 +368,11 @@ class SlurmPool:
             else:
                 used_nodes[k] -= registed_jobs - self.pool_size
                 break
-        self.logger.info(f'Used {len(used_nodes)} nodes.')
-        self.logger.info(f'Each node will excute {max(used_nodes.values())} tasks in parallel.')
-        self.logger.info(f'{used_nodes}')
+        self.logger.info(f"Used {len(used_nodes)} nodes.")
+        self.logger.info(
+            f"Each node will excute {max(used_nodes.values())} tasks in parallel."
+        )
+        self.logger.info(f"{used_nodes}")
         k, m = divmod(len(cmds), self.pool_size)
         ith = 0
         task_log = {}
@@ -347,15 +384,15 @@ class SlurmPool:
             auto_refresh=False,
         ) as progress:
             for node, n_jobs in used_nodes.items():
-                self.logger.info(f'{node}: {n_jobs} tasks')
+                self.logger.info(f"{node}: {n_jobs} tasks")
                 task = progress.add_task(f"Submitting to {node}...", total=n_jobs)
                 for _ in range(n_jobs):
                     time.sleep(sleep_time)
                     start, end = ith * k + min(ith, m), (ith + 1) * k + min(ith + 1, m)
-                    self.logger.info(f'Task {ith}: containing job {start}-{end-1}')
-                    task_name = f'{job_name}_{ith:>03}'
+                    self.logger.info(f"Task {ith}: containing job {start}-{end - 1}")
+                    task_name = f"{job_name}_{ith:>03}"
                     self.single_submit(
-                        self.nodes[node]['partition'],
+                        self.nodes[node]["partition"],
                         node,
                         self.ncpus_per_job,
                         cmds[start:end],
@@ -366,14 +403,14 @@ class SlurmPool:
                     progress.refresh()
                     ith += 1
                     task_log[task_name] = {
-                        'node': node,
-                        'script': f'{task_name}.sh',
-                        'stdout': f'{task_name}.out.log',
-                        'stderr': f'{task_name}.err.log',
-                        'cmd': cmds[start:end],
+                        "node": node,
+                        "script": f"{task_name}.sh",
+                        "stdout": f"{task_name}.out.log",
+                        "stderr": f"{task_name}.err.log",
+                        "cmd": cmds[start:end],
                     }
-        with open(f'{self.file_dir}/{self.time_now}.log', 'w') as f:
-            self.logger.info(f'Writing task log to {self.file_dir}/{self.time_now}.log')
+        with open(f"{self.file_dir}/{self.time_now}.log", "w") as f:
+            self.logger.info(f"Writing task log to {self.file_dir}/{self.time_now}.log")
             json.dump(task_log, f, indent=4)
 
     def starmap(self, func: Callable, params: Iterable[Iterable]):
@@ -415,7 +452,7 @@ class SlurmPool:
     @classmethod
     def clean(cls):
         """Clean up the scripts and log files."""
-        command = ['rm', '-rf', cls.dir_path]
+        command = ["rm", "-rf", cls.dir_path]
         _ = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True)
 
     def close(self):
